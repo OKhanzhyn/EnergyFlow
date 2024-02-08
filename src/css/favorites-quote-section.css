@@ -1,5 +1,119 @@
 .fav-quote-wrapper {
-    display: flex;
+  display: flex;
+  gap: 12px;
 
-    background-color: var(--c-primary);
+  padding: 40px 20px;
+  border-radius: 50px;
+
+  background-color: var(--c-primary);
+
+  position: relative;
+}
+
+.running-man {
+  width: 34px;
+  height: 32px;
+  padding: 6px 7px;
+
+  border-radius: 50%;
+  background-color: var(--c-light-tr10);
+}
+
+.svg-running-man {
+  fill: var(--c-light);
+}
+
+.fav-quote-title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.4em;
+  color: var(--c-light);
+
+  padding-bottom: 14px;
+}
+
+.fav-quote-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.28em;
+  color: var(--c-light-tr60);
+
+  padding-bottom: 25px;
+}
+
+.fav-quote-author {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.28em;
+  color: var(--c-light);
+}
+
+.svg-commas {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+
+  fill: var(--c-light);
+}
+
+.fav-quote-image {
+  max-width: 335px;
+  height: 272px;
+  border-radius: 50px;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: var(--c-primary-tr);
+}
+
+@media screen and (min-width: 320px) {
+  .fav-quote-image {
+    background-image: url('../img/favorites-image_mob.webp');
+  }
+
+  @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
+    .fav-quote-image {
+      background-image: url('../img/favorites-image_mob@2x.webp');
+    }
+  }
+}
+
+.fav-daily-norm {
+  max-width: 335px;
+  height: 272px;
+  border-radius: 50px;
+
+  background-color: var(--c-white);
+}
+
+.svg-weight {
+  fill: var(--c-black);
+
+  padding-top: 96px;
+  padding-left: 102px;
+}
+
+@media screen and (min-width: 768px) {
+  .fav-quote-image {
+    background-image: url('../img/favorites-image_tab.webp');
+  }
+
+  @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+    .fav-quote-image {
+      background-image: url('../img/favorites-image_tab@2x.webp');
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .fav-quote-image {
+    background-image: url('../img/favorites-image_desk.webp');
+  }
+
+  @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+    .fav-quote-image {
+      background-image: url('../img/favorites-image_desk@2x.webp');
+    }
+  }
 }
