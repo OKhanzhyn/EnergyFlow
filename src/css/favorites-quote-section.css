@@ -1,0 +1,5 @@
+.fav-quote-wrapper {
+    display: flex;
+
+    background-color: var(--c-primary);
+}
