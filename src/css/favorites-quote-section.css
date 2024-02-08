@@ -89,9 +89,20 @@
 
 .svg-weight {
   fill: var(--c-black);
+}
 
-  padding-top: 96px;
-  padding-left: 102px;
+.fav-daily-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1em;
+  color: var(--c-black);
+}
+
+.fav-daily-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  color: var(--c-black-tr60);
 }
 
 @media screen and (min-width: 768px) {
