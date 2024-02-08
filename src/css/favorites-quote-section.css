@@ -149,6 +149,7 @@
     gap: 16px;
 
     padding: 64px 80px;
+    margin-bottom: 16px;
   }
 
   .fav-quote-title {
@@ -193,7 +194,9 @@
   }
 
   .fav-quote-wrapper {
+    max-height: 302px;
     padding: 64px;
+    margin-bottom: 0;
   }
 
   .fav-quote-title {
