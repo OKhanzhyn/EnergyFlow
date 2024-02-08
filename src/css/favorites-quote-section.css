@@ -1,3 +1,43 @@
+@media screen and (min-width: 320px) {
+  .fav-quote-image {
+    background-image: url('../img/favorites-image_mob.webp');
+  }
+
+  @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
+    .fav-quote-image {
+      background-image: url('../img/favorites-image_mob@2x.webp');
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .fav-quote-image {
+    background-image: url('../img/favorites-image_tab.webp');
+  }
+
+  @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+    .fav-quote-image {
+      background-image: url('../img/favorites-image_tab@2x.webp');
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .fav-quote-image {
+    background-image: url('../img/favorites-image_desk.webp');
+  }
+
+  @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+    .fav-quote-image {
+      background-image: url('../img/favorites-image_desk@2x.webp');
+    }
+  }
+}
+
+.fav-quote-section {
+  margin-top: 20px;
+}
+
 .fav-quote-wrapper {
   display: flex;
   gap: 12px;
@@ -67,24 +107,16 @@
   background-color: var(--c-primary-tr);
 }
 
-@media screen and (min-width: 320px) {
-  .fav-quote-image {
-    background-image: url('../img/favorites-image_mob.webp');
-  }
-
-  @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
-    .fav-quote-image {
-      background-image: url('../img/favorites-image_mob@2x.webp');
-    }
-  }
-}
-
-.fav-daily-norm {
+.fav-daily-wrapper {
   max-width: 335px;
   height: 272px;
   border-radius: 50px;
 
   background-color: var(--c-white);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .svg-weight {
@@ -96,6 +128,9 @@
   font-size: 20px;
   line-height: 1em;
   color: var(--c-black);
+
+  padding-top: 15px;
+  padding-bottom: 6px;
 }
 
 .fav-daily-text {
@@ -106,25 +141,74 @@
 }
 
 @media screen and (min-width: 768px) {
-  .fav-quote-image {
-    background-image: url('../img/favorites-image_tab.webp');
+  .fav-quote-section {
+    margin-top: 16px;
   }
 
-  @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
-    .fav-quote-image {
-      background-image: url('../img/favorites-image_tab@2x.webp');
-    }
+  .fav-quote-wrapper {
+    gap: 16px;
+
+    padding: 64px 80px;
+  }
+
+  .fav-quote-title {
+    padding-bottom: 16px;
+  }
+
+  .fav-quote-text {
+    line-height: 1.5em;
+  }
+
+  .svg-commas {
+    width: 48px;
+    height: 48px;
+
+    top: 32px;
+    right: 80px;
+  }
+
+  .fav-flex-wrapper {
+    display: flex;
+  }
+
+  .fav-quote-image {
+    min-width: 368px;
+    height: 302px;
+  }
+
+  .fav-daily-wrapper {
+    min-width: 368px;
+    height: 302px;
+  }
+
+  .fav-daily-title {
+    font-size: 24px;
+    line-height: 1.33em;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .fav-quote-image {
-    background-image: url('../img/favorites-image_desk.webp');
+  .quote-section-inner {
+    display: flex;
   }
 
-  @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
-    .fav-quote-image {
-      background-image: url('../img/favorites-image_desk@2x.webp');
-    }
+  .fav-quote-wrapper {
+    padding: 64px;
+  }
+
+  .fav-quote-title {
+    padding-bottom: 16px;
+  }
+
+  .svg-commas {
+    right: 64px;
+  }
+
+  .fav-quote-image {
+    max-width: 352px;
+  }
+
+  .fav-daily-wrapper {
+    max-width: 352px;
   }
 }
