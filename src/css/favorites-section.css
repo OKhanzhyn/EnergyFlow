@@ -3,8 +3,7 @@
     width: 375px;
     padding-left: 20px;
     padding-right: 20px;
-    margin: 0 auto;
-
+    margin: 20px auto;
 }
 .container-favorites {
     background-color: var(--c-bg-light);
@@ -15,8 +14,8 @@
 }
 .title-favorites {
     font-size: 32px;
-    color: var(--c-black);
     letter-spacing: -0.02em;
+    line-height: 100%;
     margin-bottom: 80px;
 }
 .message-block-favorites {
@@ -33,12 +32,27 @@
     line-height: 129%;
     text-align: center;
 }
+.item-favorites {
+    width: 295px;
+    padding: 16px;
+    border-radius: 15px;
+    background-color: var(--c-white);
+}
+button {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+.delete-icon {
+    fill: var(--c-black);
+}
 
 @media screen and (min-width: 768px) {
     .section-favorites {
         padding-left: 16px;
         padding-right: 16px;
         width: 768px;
+        margin: 16px auto;
     }
     .container-favorites {
         padding: 64px 48px;
