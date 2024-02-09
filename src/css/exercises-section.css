@@ -1,0 +1,134 @@
+
+.title-exercises {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: var(--c-black);
+    margin-bottom: 25px;
+
+}
+
+.exercises-container {
+    border-radius: 30px;
+    width: 335px;
+    height: 2252px;
+    background: var(--c-bg-light);
+    padding-top: 35px;
+    padding-left: 22px;
+    margin-top: 20px;
+}
+
+.switch-item-1 {
+    width: 81px;
+}
+
+
+.switch-item {
+    width: 99px;
+    white-space: nowrap;
+}
+
+
+.switch-item-1,
+.switch-item {
+    background: var(--c-light);
+    border-radius: 30px;
+    padding: 7px 14px;
+    height: 32px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    color: var(--c-black);
+    border: none;
+    box-shadow: none;
+}
+.switch-item-1:hover,
+.switch-item:hover,
+.switch-item-1:active,
+.switch-item:active {
+    border: 1px solid #000;
+    background: var(--c-primary);
+    color: var(--c-light);
+}
+
+
+.switch-list {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 30px;
+}
+
+.exercises-list {
+    margin-bottom: 20px;
+}
+.exercises-item {
+    margin-bottom: 20px;
+}
+
+.exercises-image {
+    border: 1px solid var(--c-light-tr30);
+    border-radius: 12px;
+    height: 232px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+        url();
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.exercises-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.page {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 160%;
+    letter-spacing: 0.04em;
+    color: var(--c-black-tr40);
+    border: none;
+    background: var(--c-bg-light); ;
+}
+
+.page:active,
+.page:hover {
+    border: 1.5px solid var(--c-black);
+    border-radius: 18px;
+    width: 31px;
+    height: 32px;
+    color: var(--c-black);
+}
+
+.exercises-title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    text-align: center;
+    color: var(--c-light);
+}
+
+.exercises-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: var(--c-light-tr40);
+}
+.image-container {
+    position: relative;
+}
+
+.text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+    
+    
+}
