@@ -16,7 +16,6 @@
     font-size: 32px;
     letter-spacing: -0.02em;
     line-height: 100%;
-    margin-bottom: 80px;
 }
 .message-block-favorites {
     width: 247px;
@@ -25,7 +24,7 @@
     justify-content: center;
     align-items: center;
     gap: 28px;
-    margin: auto;
+    margin: 80px auto 0 auto;
 }
 .text-favorites {
     font-size: 14px;
@@ -39,6 +38,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top: 20px;
 }
 .item-favorites {
     position: relative;
@@ -63,8 +63,13 @@
     width: 76px;
     text-transform:uppercase;
 }
+.delete-from-fav {
+    width: 16px;
+    height: 16px;
+}
 .delete-icon {
-    fill: var(--c-black);
+    stroke: var(--c-black);
+    fill: var(--c-light);  
 }
 .start-btn {
     position: absolute;
@@ -104,12 +109,29 @@
 .category-text-accent {
     color: rgba(27, 27, 27, 0.4);
 }
+.arrow-icon {
+    stroke: var(--c-black);
+}
+.icon-man-wraper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background-color: var(--c-primary);
+}
+.man-icon {
+    fill: var(--c-white);
+}
 
 button {
     padding: 0;
     border: none;
     background-color: transparent;
 }
+
 @media screen and (min-width: 768px) {
     .section-favorites {
         padding-left: 16px;
@@ -124,7 +146,6 @@ button {
     .title-favorites {
         font-size: 44px;
         line-height: 109%;
-        margin-bottom: 208px;
     }
     .img-favorites {
         width: 115px;
@@ -136,7 +157,19 @@ button {
     .text-favorites {
         font-size: 18px;
         line-height: 133%;
+    }
+    .gallery-fovorites {
+        margin-top: 32px;
+    }
+    .item-favorites {
+        width: 313px; 
     } 
+    .ex-title {
+        font-size: 24px;
+    }
+    .start-btn {
+        font-size: 16px;
+    }
   }
   
   @media screen and (min-width: 1440px) {
@@ -148,5 +181,8 @@ button {
     }
     .title-favorites {
         margin-bottom: 246px;
+    }
+    .item-favorites {
+        width: 424px;
     }
   }
