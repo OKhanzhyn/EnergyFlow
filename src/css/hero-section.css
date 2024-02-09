@@ -1,0 +1,108 @@
+/* .wrapper {
+        border-radius: 30px;
+            width: 335px;
+            padding: 0 20px;
+                margin: 0 auto;
+} */
+
+@media screen and (min-width: 320px) and (max-width: 767.9px){
+    .wrapper {
+        min-width: 320px;
+        max-width: 335px;
+        margin: 0 auto;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('../img/hero-bg_mob.webp');
+    }
+
+    @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
+        .wrapper {
+            background-size: contain;
+        background-repeat: no-repeat;
+            background-image: url('../img/hero-bg_mob@2x.webp');
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .wrapper {
+        background-size: contain;
+            background-repeat: no-repeat;
+        background-image: url('../img/hero-bg_tab.webp');
+    }
+
+    @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+        .wrapper {
+            background-image: url('../img/hero-bg_tab@2x.webp');
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .wrapper {
+        background-image: url('../img/hero-bg_desk.webp');
+    }
+
+    @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+        .wrapper {
+            background-image: url('../img/hero-bg_desk@2x.webp');
+        }
+    }
+}
+
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 140px;
+    padding-top: 280px;
+    margin-left: 10px;
+    padding-bottom: 20px;
+}
+
+.hero-tags-item {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 117%;
+    color: var(--c-light);
+    border: 1px solid rgba(246, 246, 246, 0.3);
+        border-radius: 30px;
+        padding: 4px 10px;
+        height: 22px;
+}
+
+.hero-inner {
+    border-radius: 30px;
+        width: 335px;
+        height: 365px;
+        background-color: var(--c-white);
+        padding-top: 60px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 20px;
+}
+
+.hero-title {
+    font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 56px;
+        line-height: 89%;
+        letter-spacing: -0.02em;
+        color: var(--c-black);
+        margin-bottom: 20px;
+}
+
+.hero-span {
+    font-style: italic;
+        color: var(--c-primary);
+}
+
+.hero-text {
+    font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 129%;
+        letter-spacing: -0.01em;
+        color: var(--c-black);
+}
+
