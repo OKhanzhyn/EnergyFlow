@@ -3,6 +3,20 @@
     /* background: rgb(232, 232, 232); */
 }
 
+@media screen and (min-width:768px) {
+    .body-parts-inner {
+        max-width: 768px;
+        margin-right: 48px;
+        margin-left: 48px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .body-parts-inner {
+        max-width: 1440px;
+    }
+}
+
 .bp-form-wraper {
     background-color: var(--c-light);
     border-radius: 30px;
@@ -15,6 +29,22 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media screen and (min-width:768px) {
+    .bp-form-wraper {
+        margin: 0 0 53px auto;
+        width: 246px;
+        height: 48px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .bp-form-wraper{
+        width: 273px;
+        margin-bottom: 32px;
+    }
+}
+
 
 .search-icon {
     fill: var(--c-light);
@@ -60,18 +90,40 @@
     align-items: center;
     flex-direction: column;
     gap: 20px;
+    flex-wrap: wrap;
 
 }
+
+@media screen and (min-width:768px) {
+    .bp-list{
+      flex-direction: row;
+      gap: 20px 14px;
+      margin-bottom: 32px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .bp-list {
+        gap: 28px 20px;
+    }
+}
+
 
 .bp-item {
     background-color: var(--c-white);
     border-radius: 15px;
-    max-width: 295px;
-    width: 100%;
+    flex-basis: calc((100% - 14px) / 2);
+    
     padding: 16px;        
     display: flex;
     flex-direction: column;
     justify-content: center;        
+}
+
+@media screen and (min-width:1440px) {
+    .bp-item {
+        flex-basis: calc((100% - 40px) / 3);
+    }
 }
 
 .bp-exercisecard-wraper {
@@ -130,6 +182,11 @@
     margin-bottom: 16px;
 }
 
+@media screen and (min-width:768px) {
+    .bp-exercise-name {
+        margin-bottom: 8px;
+    }
+}
 
 .bp-run-icon {
     background-color: var(--c-primary);
@@ -145,7 +202,7 @@
 .bp-exercise-name > span {
     color: var(--c-black);
     font-family: DM Sans;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 20px;       
 }
 
