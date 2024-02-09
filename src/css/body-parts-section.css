@@ -1,0 +1,177 @@
+.body-parts-inner {
+    margin: 20px auto;
+    /* background: rgb(232, 232, 232); */
+}
+
+.bp-form-wraper {
+    background-color: var(--c-light);
+    border-radius: 30px;
+    width: 295px;
+    height: 42px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-icon {
+    fill: var(--c-light);
+    stroke: var(--c-black);
+}
+
+.bp-search-input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: var(--c-black);
+    font-family: DM Sans;        
+    padding-left: 14px;
+    padding-top: 12px;
+    padding-bottom: 12px;    
+}
+
+.bp-search-button {
+    background-color: transparent;
+    border: none;
+    margin-right: 14px;
+    padding: 0;
+}
+
+.bp-search-input::placeholder {
+    color: var(--c-black);
+    font-family: DM Sans;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;    
+    padding-top: 12px;
+    padding-bottom: 12px;
+        
+}
+
+.workout-span {
+    background-color: var(--c-primary);
+}
+
+.bp-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.bp-item {
+    background-color: var(--c-white);
+    border-radius: 15px;
+    max-width: 295px;
+    width: 100%;
+    padding: 16px;        
+    display: flex;
+    flex-direction: column;
+    justify-content: center;        
+}
+
+.bp-exercisecard-wraper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+
+.bp-workout-span {
+    padding: 5px 8px 5px 8px;
+    color: var(--c-light);
+    font-family: DM Sans;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    background-color: var(--c-primary);
+    border-radius: 15px;
+    margin-right: 16px;
+}
+
+.bp-rating {
+    color: var(--c-black);
+    font-family: DM Sans;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0px;        
+}
+
+.icon-star {
+    fill: var(--c-filled-stars);
+    vertical-align: middle;
+
+}
+
+.bp-start-button {
+    margin: 0 0 0 auto;
+    color: var(--c-black);
+    font-family: DM Sans;
+    font-size: 14px;    
+    line-height: 18px;
+    border: none;
+    background-color: transparent;    
+}
+
+.bp-arrow {
+   stroke: var(--c-black);
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
+.bp-exercise-name {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+
+.bp-run-icon {
+    background-color: var(--c-primary);
+    fill: var(--c-light);
+    margin: 0 16px 0 0 ;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+
+}
+
+.bp-exercise-name > span {
+    color: var(--c-black);
+    font-family: DM Sans;
+    font-size: 20px;
+    line-height: 20px;       
+}
+
+.bp-block-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+
+}
+
+.bp-block-info-title {
+    color: var(--c-black-tr40);
+    font-family: DM Sans;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.calories {
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+.bp-block-info-value {
+    color: var(--c-black);
+        font-family: DM Sans;
+        font-size: 12px;
+        line-height: 18px;
+}
