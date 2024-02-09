@@ -32,21 +32,84 @@
     line-height: 129%;
     text-align: center;
 }
+
+
+/* Favorite item */
+.gallery-fovorites {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 .item-favorites {
+    position: relative;
     width: 295px;
     padding: 16px;
     border-radius: 15px;
     background-color: var(--c-white);
 }
+.workout-block {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.workout-title {
+    border-radius: 15px;
+    padding: 5px 8px;
+    background-color: var(--c-primary);
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--c-light);
+    width: 76px;
+    text-transform:uppercase;
+}
+.delete-icon {
+    fill: var(--c-black);
+}
+.start-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 14px;
+    color: var(--c-black);
+}
+.ex-title-block {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+.ex-title {
+    color: var(--c-black);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 100%;
+}
+.list-ex-category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 6px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    
+}
+.category-text {
+    color: var(--c-black);
+}
+.category-text-accent {
+    color: rgba(27, 27, 27, 0.4);
+}
+
 button {
     padding: 0;
     border: none;
     background-color: transparent;
 }
-.delete-icon {
-    fill: var(--c-black);
-}
-
 @media screen and (min-width: 768px) {
     .section-favorites {
         padding-left: 16px;
