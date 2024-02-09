@@ -1,0 +1,98 @@
+body {
+ background: rgb(246, 246, 246);
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.container {
+  min-width: 320px;
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.quote-day {
+  border-radius: 30px;
+  background: rgb(126, 132, 127);
+  width: 335px;
+  height: 272px;
+  position: relative;
+}
+
+.quote-title {
+  color: rgb(246, 246, 246);
+  font-family: DM Sans;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0px;
+  text-align: left;
+  padding-top: 42px;
+  padding-left: 66px;
+  padding-right: 109px;
+  margin-bottom: 14px;
+}
+
+.description {
+  color: rgba(246, 246, 246, 0.6);
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;
+  padding-left: 66px;
+  padding-right: 20px;
+  margin-bottom: 14px;
+}
+
+.author-quote {
+  color: rgb(246, 246, 246);
+  font-family: DM Sans;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  padding-left: 66px;
+  padding-right: 188px;
+  margin-bottom: 40px;
+}
+
+.running-man {
+  background: rgba(246, 246, 246, 0.1);
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  top: 40px;
+  left: 20px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-icon {
+  fill: rgb(246, 246, 246);
+}
+.element-commas {
+  position: absolute;
+  top: 45.6px;
+  right: 23.6px;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.icon-commas {
+  fill: rgb(246, 246, 246);
+}
+
+.background-image {
+  background: url('../img/quote-image_mob.webp') no-repeat;
+  height: 272px;
+  
+}
