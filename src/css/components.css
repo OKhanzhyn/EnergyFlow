@@ -1,0 +1,30 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans';
+    background-color: var(--c-light);
+    font-size: 16px;
+    color: var(--c-black);
+}
+
+.container {
+    min-width: 320px;
+    max-width: 375px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        padding: 0 16px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .container {
+        max-width: 1440px;
+    }
+}
