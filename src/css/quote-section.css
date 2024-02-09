@@ -1,16 +1,7 @@
-body {
- background: rgb(246, 246, 246);
-}
+/* Базові стилі */
 
 .section {
   margin-top: 20px;
-}
-
-.container {
-  min-width: 320px;
-  max-width: 375px;
-  padding: 0 20px;
-  margin: 0 auto;
 }
 
 .quote-day {
@@ -23,7 +14,6 @@ body {
 
 .quote-title {
   color: rgb(246, 246, 246);
-  font-family: DM Sans;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
@@ -37,10 +27,9 @@ body {
 
 .description {
   color: rgba(246, 246, 246, 0.6);
-  font-family: DM Sans;
   font-size: 14px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.29;
   letter-spacing: 0px;
   text-align: left;
   padding-left: 66px;
@@ -50,14 +39,13 @@ body {
 
 .author-quote {
   color: rgb(246, 246, 246);
-  font-family: DM Sans;
   font-size: 16px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 1.5;
   text-align: left;
   padding-left: 66px;
   padding-right: 188px;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 .running-man {
@@ -76,6 +64,7 @@ body {
 .quote-icon {
   fill: rgb(246, 246, 246);
 }
+
 .element-commas {
   position: absolute;
   top: 45.6px;
@@ -92,7 +81,117 @@ body {
 }
 
 .background-image {
-  background: url('../img/quote-image_mob.webp') no-repeat;
+  background: url('../img/quote-image_mob.webp');
   height: 272px;
-  
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Планшет */
+
+@media only screen and (min-width: 768px) {
+  .section {
+    margin-top: 16px;
+  }
+
+  .quote-day {
+    border-radius: 50px;
+    width: 736px;
+    height: 302px;
+  }
+
+  .quote-title {
+    padding-top: 64px;
+    padding-left: 130px;
+    padding-right: 414px;
+    font-size: 24px;
+    line-height: 1.33;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    padding-left: 130px;
+    padding-right: 80px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+  }
+
+  .author-quote {
+    padding-left: 130px;
+    padding-right: 525px;
+    padding-bottom: 69px;
+  }
+
+  .running-man {
+    top: 64px;
+    left: 80px;
+  }
+
+  .element-commas {
+    top: 41.6px;
+    right: 86.17px;
+  }
+
+  .background-image {
+    background: url('../img/quote-image_tab.webp');
+    height: 302px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    background-position: center;
+  }
+}
+
+/* Десктоп */
+
+@media only screen and (min-width: 1440px) {
+  .section {
+    margin-top: 16px;
+  }
+
+  .quote-day {
+    width: 704px;
+    height: 302px;
+  }
+
+  .quote-title {
+    padding-left: 114px;
+    padding-right: 398px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.5;
+    padding-left: 114px;
+    padding-right: 64px;
+  }
+
+  .author-quote {
+    padding-left: 114px;
+    padding-right: 509px;
+    padding-bottom: 69px;
+  }
+
+  .running-man {
+    left: 64px;
+  }
+
+  .element-commas {
+    top: 41.6px;
+    right: 70.17px;
+  }
+
+  .wrapper-quote {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .background-image {
+    background: url('../img/quote-image_desk.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
+  }
 }
