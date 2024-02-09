@@ -34,10 +34,6 @@
   }
 }
 
-.fav-quote-section {
-  margin-top: 20px;
-}
-
 .fav-quote-wrapper {
   display: flex;
   gap: 12px;
@@ -105,6 +101,7 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-color: var(--c-primary-tr);
+  background-image: url('../img/favorites-image_mob.webp');
 }
 
 .fav-daily-wrapper {
@@ -142,7 +139,7 @@
 
 @media screen and (min-width: 768px) {
   .fav-quote-section {
-    margin-top: 16px;
+    margin-top: 32px;
   }
 
   .fav-quote-wrapper {
@@ -189,6 +186,10 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .fav-quote-section {
+    margin-top: 24px;
+  }
+
   .quote-section-inner {
     display: flex;
   }
