@@ -11,11 +11,9 @@
 
 .exercises-container {
     border-radius: 30px;
-    width: 335px;
     height: 2252px;
     background: var(--c-bg-light);
-    padding-top: 35px;
-    padding-left: 22px;
+    padding: 40px 20px;
     margin-top: 20px;
 }
 
@@ -52,7 +50,6 @@
     color: var(--c-light);
 }
 
-
 .switch-list {
     display: flex;
     gap: 6px;
@@ -70,6 +67,7 @@
     border: 1px solid var(--c-light-tr30);
     border-radius: 12px;
     height: 232px;
+    width: 295px;
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
         url();
     background-size: cover;
@@ -129,6 +127,69 @@
 }
 
 @media only screen and (min-width: 768px) {
+    .title-exercises {
+        font-size: 44px;
+        line-height: 109%;
+    }
+    .exercises-container {
+        border-radius: 50px;
+        height: 1918px;
+        padding: 60px;
+    }
+    .switch-item-1 {
+        width: 101px;
+    }
+
+    .switch-item {
+         width: 121px;
+    }    
+
+
+    .switch-item-1,
+    .switch-item {
+        padding: 10px 20px;
+        height: 44px;
+        font-size: 16px;
+        line-height: 150%;
+    }
+
+    .exercises-image {
+        height: 250px;
+        width: 313px;
+    }
+    .exercises-title {
+        font-size: 24px;
+    }
+    .exercises-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .exercises-item {
+        margin-bottom: 0px;
+    }
     
-    
+    .page {
+        font-size: 24px;
+        line-height: 133%;
+    }
+    .page:active,
+    .page:hover {
+        width: 32px;
+    }   
+
+}
+
+@media only screen and (min-width: 1440px) {
+    .exercises-container {
+        height: 1178px;
+    }
+    .exercises-item {
+        margin-bottom: 20px;
+    }
+    .exercises-item {
+        width: calc(25% - 20px);
+        box-sizing: border-box;
+    }
+
 }
