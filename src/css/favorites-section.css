@@ -34,7 +34,7 @@
 
 
 /* Favorite item */
-.gallery-fovorites {
+.gallery-favorites {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -158,7 +158,7 @@ button {
         font-size: 18px;
         line-height: 133%;
     }
-    .gallery-fovorites {
+    .gallery-favorites {
         margin-top: 32px;
     }
     .item-favorites {
