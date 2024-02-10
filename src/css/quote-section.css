@@ -6,7 +6,7 @@
 
 .quote-day {
   border-radius: 30px;
-  background: rgb(126, 132, 127);
+  background: var(--c-primary);
   width: 335px;
   height: 272px;
   position: relative;
@@ -17,7 +17,6 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
-  letter-spacing: 0px;
   text-align: left;
   padding-top: 42px;
   padding-left: 66px;
@@ -26,11 +25,10 @@
 }
 
 .description {
-  color: rgba(246, 246, 246, 0.6);
+  color:  var(--c-light-tr60);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.29;
-  letter-spacing: 0px;
   text-align: left;
   padding-left: 66px;
   padding-right: 20px;
@@ -38,7 +36,7 @@
 }
 
 .author-quote {
-  color: rgb(246, 246, 246);
+  color:  var(--c-light);
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
@@ -49,10 +47,11 @@
 }
 
 .running-man {
-  background: rgba(246, 246, 246, 0.1);
-  width: 32px;
+  background: var(--c-light-tr10);
+  width: 34px;
   height: 32px;
   border-radius: 100%;
+  padding: 6px 7px;
   top: 40px;
   left: 20px;
   position: absolute;
@@ -62,13 +61,13 @@
 }
 
 .quote-icon {
-  fill: rgb(246, 246, 246);
+  fill: var(--c-light);
 }
 
 .element-commas {
   position: absolute;
-  top: 45.6px;
-  right: 23.6px;
+  top: 40px;
+  right: 20px;
   width: 28px;
   height: 28px;
   align-items: center;
@@ -77,13 +76,13 @@
 }
 
 .icon-commas {
-  fill: rgb(246, 246, 246);
+  fill: var(--c-light);
 }
 
 .background-image {
-  max-width: 335px;
+  min-width: 335px;
   height: 272px;
-  border-radius: 50px;
+  border-radius: 30px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
