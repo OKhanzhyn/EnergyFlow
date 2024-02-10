@@ -13,14 +13,15 @@
     border-radius: 30px;
     height: 2252px;
     max-width: 335px;
-    background: var(--c-bg-light);
+    background-color: var(--c-bg-light);
     padding: 40px 20px;
     margin-top: 20px;
+    
 }
 
 .switch-item {
     white-space: nowrap;
-    background: var(--c-light);
+    background-color: var(--c-light);
     border-radius: 30px;
     padding: 7px 14px;
     font-weight: 400;
@@ -30,8 +31,8 @@
     border: none;
     box-shadow: none;
 }
-.active {
-    background: var(--c-primary);
+.is-active {
+    background-color: var(--c-primary);
     color: var(--c-light);
 }
 
@@ -39,6 +40,7 @@
     display: flex;
     gap: 6px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .exercises-list {
@@ -73,7 +75,7 @@
     letter-spacing: 0.04em;
     color: var(--c-black-tr40);
     border: none;
-    background: var(--c-bg-light); ;
+    background-color: var(--c-bg-light); ;
 }
 
 .page:active,
@@ -128,7 +130,7 @@
         font-size: 16px;
         line-height: 150%;
     }
-
+  
     .exercises-image {
         height: 250px;
         width: 313px;
