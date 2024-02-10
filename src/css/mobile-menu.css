@@ -155,4 +155,9 @@
     width: 25px;
     height: 25px; 
 }
-
+.soc-conts-icon:hover {
+    fill: #5F6560;
+}
+.soc-conts-icon:focus {
+    fill: #5F6560;
+}
