@@ -81,11 +81,14 @@
 }
 
 .background-image {
-  background: url('../img/quote-image_mob.webp');
+  max-width: 335px;
   height: 272px;
+  border-radius: 50px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 50% 50%;
+  background-color: var(--c-primary-tr);
+  background-image: url('../img/quote-image_mob.webp');
 }
 
 /* Планшет */
@@ -136,11 +139,12 @@
 
   .background-image {
     background: url('../img/quote-image_tab.webp');
+    max-width: 768px;
     height: 302px;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    background-position: center;
+    background-position: 50% 50%;
   }
 }
 
@@ -192,6 +196,30 @@
     background: url('../img/quote-image_desk.webp');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: 50% 50%;
+    min-width: 704px;
+    display: flex;
   }
 }
+
+
+/* retina */
+
+ @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
+    .background-image {
+      background-image: url('../img/quote-image_mob@2x.webp');
+    }
+  }
+
+  @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+    .background-image {
+      background-image: url('../img/quote-image_tab@2x.webp');
+    }
+  }
+
+     @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+    .background-image {
+      background-image: url('../img/quote-image_desk@2x.webp');
+    }
+  }
+
