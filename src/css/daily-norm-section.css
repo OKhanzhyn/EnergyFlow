@@ -73,10 +73,11 @@
     border-radius: 50%;
     position: absolute;
     transform: translateX(-50px);
-    padding: 10px 8px;
+    padding: 6px;
     width: 32px;
     height: 32px;
 }
+
 
 .daily-norm-title {
     color: var(--c-light);
@@ -139,9 +140,11 @@
         border-radius: 50%;
         position: absolute;
         transform: translateX(-50px);
-        padding: 10px 8px;
+        padding: 6px;
+        width: 32px;
+        height: 32px;
     }
-
+    
     .daily-norm-title {
         color: var(--c-light);
         font-size: 24px;
@@ -178,9 +181,9 @@
     .daily-norm {
         display: flex;
         flex-wrap: nowrap;
-        max-width: 1408px;
         margin: auto;
     }
+
     .daily-norm-pic {
         max-width: 704px;
         max-height: 302px;
@@ -210,8 +213,11 @@
         border-radius: 50%;
         position: absolute;
         transform: translateX(-50px);
-        padding: 10px 8px;
+        padding: 6px;
+        width: 32px;
+        height: 32px;
     }
+    
 
     .daily-norm-title {
         color: var(--c-light);
