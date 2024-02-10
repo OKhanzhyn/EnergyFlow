@@ -12,28 +12,17 @@
 .exercises-container {
     border-radius: 30px;
     height: 2252px;
+    max-width: 335px;
     background: var(--c-bg-light);
     padding: 40px 20px;
     margin-top: 20px;
 }
 
-.switch-item-1 {
-    width: 81px;
-}
-
-
 .switch-item {
-    width: 99px;
     white-space: nowrap;
-}
-
-
-.switch-item-1,
-.switch-item {
     background: var(--c-light);
     border-radius: 30px;
     padding: 7px 14px;
-    height: 32px;
     font-weight: 400;
     font-size: 14px;
     line-height: 129%;
@@ -41,11 +30,7 @@
     border: none;
     box-shadow: none;
 }
-.switch-item-1:hover,
-.switch-item:hover,
-.switch-item-1:active,
-.switch-item:active {
-    border: 1px solid #000;
+.active {
     background: var(--c-primary);
     color: var(--c-light);
 }
@@ -134,21 +119,12 @@
     .exercises-container {
         border-radius: 50px;
         height: 1918px;
+        max-width: 736px;
         padding: 60px;
     }
-    .switch-item-1 {
-        width: 101px;
-    }
-
-    .switch-item {
-         width: 121px;
-    }    
-
-
-    .switch-item-1,
+   
     .switch-item {
         padding: 10px 20px;
-        height: 44px;
         font-size: 16px;
         line-height: 150%;
     }
@@ -183,6 +159,7 @@
 @media only screen and (min-width: 1440px) {
     .exercises-container {
         height: 1178px;
+        max-width: 1408px;
     }
     .exercises-item {
         margin-bottom: 20px;
