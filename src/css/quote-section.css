@@ -7,13 +7,11 @@
 .quote-day {
   border-radius: 30px;
   background: var(--c-primary);
-  width: 335px;
-  height: 272px;
   position: relative;
 }
 
 .quote-title {
-  color: rgb(246, 246, 246);
+  color: var(--c-light);
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
@@ -80,7 +78,7 @@
 }
 
 .background-image {
-  min-width: 335px;
+  max-width: 335px;
   height: 272px;
   border-radius: 30px;
   background-size: cover;
