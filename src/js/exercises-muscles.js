@@ -1,11 +1,13 @@
 import axios from 'axios';
 
+import { renderPagination } from './pagination.js';
+
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
 let defaults = 'muscles';
 const switcList = document.querySelector('.switch-list');
 const exercisesList = document.querySelector('.exercises-list');
-const page = document.querySelector('exercises-page')
+const page = document.querySelector('.exercises-page')
 const mediaQuery = window.innerWidth;
 let pageSize;
 
@@ -31,7 +33,7 @@ async function getApiInfo({ filter, page = 1, limit = 12, type }) {
   }
 }
 
-async function get() {
+async function getAxios() {
   try {
     const exercises = await getApiInfo({
       type: 'filters',
@@ -39,27 +41,31 @@ async function get() {
       limit: pageSize,
     }).then(data => {
       const { results } = data;
-      exercisesList.innerHTML = markup(results);
+      exercisesList.innerHTML = createMarkup(results);
    });
   } catch {
     console.error;
   }
 }
-get();
+getAxios();
 
-switcList.addEventListener('click', filter);
-async function filter(event) {
+switcList.addEventListener('click', filterBtn);
+async function filterBtn(event) {
   event.preventDefault();
+
+  if (event.target.tagName !== 'BUTTON') {
+    return;
+  }
   let curPage = 1;
-  const fitV = event.target;
-  const query = fitV.dataset.filter;
+  const filterValue = event.target;
+  const query = filterValue.dataset.filter;
  
   exercisesList.innerHTML = ''
-  Array.from(event.currentTarget.children).map(it => {
-    if (it.textContent !== event.target.textContent) {
-      it.classList.remove('is-active');
+  Array.from(event.currentTarget.children).map(item => {
+    if (item.textContent !== event.target.textContent) {
+      item.classList.remove('is-active');
     } else {
-      it.classList.add('is-active');
+      item.classList.add('is-active');
     }
   })
       try {
@@ -70,20 +76,14 @@ async function filter(event) {
         }).then(data => {
           const { results } = data;
           
-          exercisesList.innerHTML = markup(results);
+          exercisesList.innerHTML = createMarkup(results);
         })
     } catch {}
 }
 
 
-const result = exercises.results;
-exercisesList.innerHTML = markup(result);
-
-
-
-
-function markup(results) {
-  const mark = results
+function createMarkup(results) {
+  const markUp = results
     .map(
       ({ name, filter, imgUrl }) =>
     `<li class="exercises-item">
@@ -99,5 +99,31 @@ function markup(results) {
          </li>`
     )
     .join('');
-  return mark;
+  return markUp;
 }
+
+// Для пагінації
+let itemsPerPage = 8;
+let currentPage = 1;
+// Для брейкпойнтів
+const mobileBreakpoint = 768;
+const tabletBreakpoint = 1440;
+// Визначення кількості карток на сторінці (в залежності від розміру екрану)
+function updateItemsPerPage() {
+    if (window.innerWidth < mobileBreakpoint) {
+        itemsPerPage = 8; // для моб
+    } else if (window.innerWidth < tabletBreakpoint) {
+        itemsPerPage = 12; // для таби
+    } else {
+        itemsPerPage = 12; // для десктопів
+    }
+}
+// Додавання обробника кліку для кожної кнопки пагінації
+paginationContainer.addEventListener('click', function(event) {
+    if (event.target.classList.contains('page')) {
+        currentPage = parseInt(event.target.textContent);
+        renderPage(currentPage);
+    }
+});
+
+ 
