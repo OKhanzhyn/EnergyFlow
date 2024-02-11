@@ -1,29 +1,56 @@
-import { getApiInfo } from './api.js'
 
-import axios from 'axios';
+axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
-const apiUrl = 'https://axios-http.com/';
-let currentPage = 1;
-const itemsPerPage = 10;
+let defaults = 'muscles';
+const switcList = document.querySelector('.switch-list');
+const exercisesList = document.querySelector('.exercises-list');
+const screenWidth = window.innerWidth;
+let pageSize = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const paginationButtons = document.querySelectorAll('.page');
-  paginationButtons.forEach(button => button.addEventListener('click', () => (currentPage = parseInt(button.textContent)) && updateExercises()));
-  updateExercises();
-});
+if (screenWidth < 375) {
+  pageSize = 8;
+}
+if (screenWidth >= 375 && screenWidth <= 768)  {
+  pageSize = 12;
+}
+else {
+  pageSize = 10;
+}
 
-const getApiInfo = async (page, limit) => (await axios.get(apiUrl, { params: { page, limit } })).data;
 
-const updateExercises = async () => {
-  try {
-    const exercises = await getApiInfo(currentPage, itemsPerPage);
-    displayExercises(exercises);
-  } catch (error) {
-    console.error('Ошибка при загрузке упражнений', error);
-  }
-};
+const exercises = await axios
+  .get('/filters', {
+    params: {
+      filter: 'Muscles',
+      limit =  pageSize;
+    }
+  })
+  .then(({ data }) => data
+  )
+  .catch(console.error);
 
-const displayExercises = exercises => {
-  // Обновите ваш интерфейс с новыми данными упражнений
-  // Это может включать в себя обновление изображений, текстов и ссылок
-};
+const result = exercises.results;
+exercisesList.innerHTML = markup(result);
+
+console.log(result);
+
+
+function markup(results) {
+  const mark = results
+    .map(
+      ({ name, filter, imgUrl }) =>
+    `<li class="exercises-item">
+          <a class="exercises-link" href="">
+          <div class="image-container">
+              <img class="exercises-image" src="${imgUrl}"/>
+              <div class="text-container">
+                <h3 class="exercises-title">${name}</h3>
+                <p class="exercises-text">${filter}</p>
+              </div>
+            </div>
+          </a>
+         </li>`
+    )
+    .join('');
+  return mark;
+}
