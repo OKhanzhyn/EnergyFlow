@@ -3,69 +3,33 @@
   | ----Mobile menu section---
   |============================
 */
-
-.mobile-menu-section {
-    display: flex;
-}
-.container {
-    display: flex;
-    /* max-width: 375px;
-    height: 812px; */
-    /* padding: 20px 20px; */
-    background-color: #F6F6F6;
-}
-
-/*--burger icon--*/
- /* .menu-toggle {
-    min-height: 40px;
-    min-width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    outline: none;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  } 
-  
-   .menu-toggle:hover,
-  .menu-toggle:focus {
-    background-color: rgba(0, 0, 0, 0.1);}
-  
-  .menu-toggle-icon {stroke: #F6F6F6;}  */
-  
+   
   /*--mobile menu overlay--*/
-  .mob-menu-box {
-    display: flex;
-
-}
 
   .menu-container {
+    
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+   
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    width: 335px;
     min-width: 320px;
-    height: 771px;
+    max-height: 771px;
     border-radius: 30px;
-    padding-top: 300px;
-    padding-bottom: 40px;
-    background-color: #7E847F;
+     padding-bottom: 40px;
+    background-color: var(--c-primary);
     z-index: 999;
-    /* transform: translateX(100%); */
+    transform: translateX(100%);
     transition: transform 250ms ease-in-out;
     box-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 2px 1px 0px rgba(46, 47, 66, 0.08);
-
   }
+  
+ 
   .menu-container.is-open {
     transform: translateX(0);}
 
@@ -73,28 +37,29 @@
     font-family: var(--font-family);
     font-weight: 700;
     font-size: 16px;
-    line-height: 112%;
-    letter-spacing: -0.02em;
-    color: #f6f6f6;
+    line-height: 1.12;
+    letter-spacing: -2%;
+    color: var(--c-light);
         top: 20px;
         left: 20px;
         padding: 0;
         position: absolute;
         }
-  
+  .logo:hover {color: var(--c-primary-hov)}
+  .logo:focus {color: var(--c-primary-hov)}
+
     /*--overlay X-BTN--*/
   .menu-container .menu-toggle-x {
     position: absolute;
     top: 20px;
     right: 20px;
-    /* color: rgba(46, 47, 66, 1); */
   }
 
   .menu-toggle-x-icon  {
     display: flex;
     width: 20px;
     height: 20px; 
-    stroke: #F6F6F6;    
+    stroke: var(--c-light);    
     }
   .menu-toggle-x {
     display: flex;
@@ -103,52 +68,37 @@
     width: 20px;
     height: 20px; 
     border: none;
-    /* border-radius: 50%;  */
+    padding: 0;
     background: transparent;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);}
   
-   
-    /* .menu-toggle-x:hover, 
-    .menu-toggle-x:focus {
-      background-color: #404bbf; 
-      border: none;} */
-   
-    .menu-toggle-x:hover .menu-toggle-x-icon {stroke: #5e5b5b}
-    .menu-toggle-x:focus .menu-toggle-x-icon  {stroke: #5e5b5b}
+      
+    .menu-toggle-x:hover .menu-toggle-x-icon {stroke: var(--c-primary-hov)}
+    .menu-toggle-x:focus .menu-toggle-x-icon  {stroke: var(--c-primary-hov)}
   
     /*--menu overlay--*/
 
   .mobile-menu {
     display: flex; 
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 16px; 
     padding: 0;
- /* margin-bottom: auto; */
-    list-style: none;
-    margin-bottom: 314px;
-}
-  .mobile-menu-item {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-     
-}
+    }
+ 
   .mobile-menu-link {
-    color: #f6f6f6;
+    color: var(--c-light);
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;
-    line-height: 150%;
+    line-height: 1.5;
     text-transform: capitalize;
     text-decoration: none;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);}
   
     .mobile-menu-link:hover, 
     .mobile-menu-link:focus {
-      color: #1B1B1B;}
+      color: var(--c-primary-hov);}
   
      .active {
         border-radius: 30px;
@@ -162,42 +112,16 @@
 
     .mob-menu-soc-box {
       display: flex; 
-      justify-content: start; 
+      justify-content: center; 
       align-items: center; 
-      flex-direction: row;       
-      /* gap: calc((100% - 40px * 4) / 3); */
-      gap: 10%;
+      flex-direction: row;      
+      width: auto;
+      width: 41px; 
+      gap: 12px;
+      padding: 0;
     }
   
-      /* .soc-conts-item {
-        width: 41px;
-        height: 41px;
-        border: 1px solid rgba(246, 246, 246, 0.2);
-       border-radius: 10px;
-       padding: 8px;
-       background-color: transparent;
-       
-      } */
-
-      /* .soc-conts-link {
-      width: 25px;
-      height: 25px;
-      stroke: #7E847F;
-      background-color:  #7E847F;
-       fill: #F6F6F6; 
-      }
-      
-.soc-conts-icon {
-     width: 25px;
-    height: 25px; 
-    fill: var(--c-primary);
-    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-} */
-
-
-/* це соц мережі */
-
-.soc-conts-link {
+   .soc-conts-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,20 +131,17 @@
     width: 41px;
     height: 41px;
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0;
 }
 .soc-conts-icon {
-    fill: #F6F6F6;
+    fill: var(--c-light);
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     width: 25px;
     height: 25px; 
 }
-
-/* це на бургер меню, я поки нічого не додавала */
-/* .header-menu-btn {
-    border: none;
-    background-color: transparent;
+.soc-conts-icon:hover {
+    fill: var(--c-primary-hov);
 }
-.icon-menu {
-    stroke: var(--c-primary);
-} */
-
+.soc-conts-icon:focus {
+    fill: var(--c-primary-hov);
+}
