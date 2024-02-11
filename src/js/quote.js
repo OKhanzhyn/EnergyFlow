@@ -56,3 +56,5 @@ function fetchQuote() {
 }
 
 getQuote();
+
+
