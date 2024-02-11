@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 let defaults = 'muscles';
 const switcList = document.querySelector('.switch-list');
 const exercisesList = document.querySelector('.exercises-list');
-const page = document.querrySelector('exercises-page')
+const page = document.querySelector('exercises-page')
 const mediaQuery = window.innerWidth;
 let pageSize;
 
@@ -53,7 +53,7 @@ async function filter(event) {
   let curPage = 1;
   const fitV = event.target;
   const query = fitV.dataset.filter;
-  console.log(query)
+ 
   exercisesList.innerHTML = ''
   Array.from(event.currentTarget.children).map(it => {
     if (it.textContent !== event.target.textContent) {
@@ -69,8 +69,8 @@ async function filter(event) {
           limit: pageSize,
         }).then(data => {
           const { results } = data;
-          console.log(results)
-          exercisesListinnerHTML = markup(results);
+          
+          exercisesList.innerHTML = markup(results);
         })
     } catch {}
 }
@@ -79,7 +79,7 @@ async function filter(event) {
 const result = exercises.results;
 exercisesList.innerHTML = markup(result);
 
-console.log(result);
+
 
 
 function markup(results) {
