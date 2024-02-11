@@ -5,8 +5,10 @@ axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 let defaults = 'muscles';
 const switcList = document.querySelector('.switch-list');
 const exercisesList = document.querySelector('.exercises-list');
+const page = document.querrySelector('exercises-page')
 const mediaQuery = window.innerWidth;
 let pageSize;
+
 
 if (window.innerWidth < 767) {
     pageSize = 8;
@@ -14,19 +16,65 @@ if (window.innerWidth < 767) {
     pageSize = 12;
   }
   
- console.log('PageSize:', pageSize);
+async function getApiInfo({ filter, page = 1, limit = 12, type }) {
+  try {
+    const response = await axios.get(`/${type}`, {
+      params: {
+        filter,
+        page,
+        limit,
+      },
+    });
+    return response.data;
+  } catch {
+    console.error('n');
+  }
+}
 
-
-const exercises = await axios
-  .get('/filters', {
-    params: {
+async function get() {
+  try {
+    const exercises = await getApiInfo({
+      type: 'filters',
       filter: 'Muscles',
       limit: pageSize,
+    }).then(data => {
+      const { results } = data;
+      exercisesList.innerHTML = markup(results);
+   });
+  } catch {
+    console.error;
+  }
+}
+get();
+
+switcList.addEventListener('click', filter);
+async function filter(event) {
+  event.preventDefault();
+  let curPage = 1;
+  const fitV = event.target;
+  const query = fitV.dataset.filter;
+  console.log(query)
+  exercisesList.innerHTML = ''
+  Array.from(event.currentTarget.children).map(it => {
+    if (it.textContent !== event.target.textContent) {
+      it.classList.remove('is-active');
+    } else {
+      it.classList.add('is-active');
     }
   })
-  .then(({ data }) => data
-  )
-  .catch(console.error);
+      try {
+        getApiInfo({
+          type: 'filters',
+          filter: query,
+          limit: pageSize,
+        }).then(data => {
+          const { results } = data;
+          console.log(results)
+          exercisesListinnerHTML = markup(results);
+        })
+    } catch {}
+}
+
 
 const result = exercises.results;
 exercisesList.innerHTML = markup(result);
