@@ -82,7 +82,8 @@
         padding: 0;
         position: absolute;
         }
-  
+  .logo:hover {color: #5e5b5b}
+  .logo:focus {color: #5e5b5b}
     /*--overlay X-BTN--*/
   .menu-container .menu-toggle-x {
     position: absolute;
