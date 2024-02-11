@@ -1,12 +1,43 @@
 import { getApiInfo } from './api.js';
 
+// Вибір з DOM
 const switchItems = document.querySelectorAll('.switch-item');
 const cardContainer = document.querySelector(".exercises-list");
 const paginationContainer = document.querySelector('.exercises-page');
 
-const itemsPerPage = 8;
-let currentPage = 1;
+// Для пагінації
+let itemsPerPage = 8; 
+let currentPage = 1; 
 
+// Для брейкпойнтів
+const mobileBreakpoint = 768; 
+const tabletBreakpoint = 1440; 
+
+// Затримувач для resize
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Визначення кількості карток на сторінці (в залежності від розміру екрану)
+function updateItemsPerPage() {
+    if (window.innerWidth < mobileBreakpoint) {
+        itemsPerPage = 8; // для моб
+    } else if (window.innerWidth < tabletBreakpoint) {
+        itemsPerPage = 9; // для таби
+    } else {
+        itemsPerPage = 9; // для десктопів
+    }
+}
+
+// Отримання даних з API (асинхронний запит)
 async function fetchDataFromApi(exercise) {
     try {
         const response = await getApiInfo({ filter: exercise, type: 'exercises' });
@@ -16,24 +47,31 @@ async function fetchDataFromApi(exercise) {
     }
 }
 
+// Рендеринг сторінки
 async function renderPage() {
     try {
+        // Для активного контейнера
         const activeContainer = document.querySelector('.switch-item.is-active');
         if (!activeContainer) {
             console.error('No active container found');
             return;
         }
+        // Для запиту
         const query = activeContainer.textContent.trim().toLowerCase(); 
         if (!query) {
             console.error('Query is undefined');
             return;
         }
+        // Для даних з API
         const exerciseData = await fetchDataFromApi(query);
 
+        // Загальна кількість сторінок
         const totalPages = Math.ceil(exerciseData.results.length / itemsPerPage);
 
+        // Рендеринг вправ (поточна сторінка)
         renderExerciseCards(exerciseData.results.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage));
 
+        // Якщо кількість вправ більше однієї сторінки
         if (exerciseData.results.length > itemsPerPage) {
             renderPagination(totalPages);
         }
@@ -42,6 +80,7 @@ async function renderPage() {
     }
 }
 
+// Рендеринг пагінації
 function renderPagination(totalPages) {
     if (!paginationContainer) {
         console.error('Pagination container not found');
@@ -63,6 +102,7 @@ function renderPagination(totalPages) {
     });
 }
 
+// Рендеринг карток вправ
 async function renderExerciseCards(exerciseData) {
     try {
         if (!exerciseData || exerciseData.length === 0) {
@@ -90,9 +130,9 @@ async function renderExerciseCards(exerciseData) {
     }
 }
 
+// Шаблон для картки вправ
 function template(exercise) {
     return `
-    <div class="exercise-card">
     <li class="bp-item">
     <div class="bp-exercisecard-wraper">
       <div class="bp-rating-info">
@@ -151,6 +191,7 @@ function template(exercise) {
   </li>`;
 }
 
+// Обробник на елемент переключення
 function handleSwitchItemClick() {
     switchItems.forEach(item => item.classList.remove('is-active'));
     this.classList.add('is-active');
@@ -158,8 +199,22 @@ function handleSwitchItemClick() {
     renderPage();
 }
 
+// Додавання обробника кліку до кожного елемента переключення
 switchItems.forEach(item => {
     item.addEventListener('click', handleSwitchItemClick);
 });
 
-renderPage();
+// Оновлення кількості карток (при завантаженні сторінки та при зміні розміру вікна)
+window.addEventListener('load', () => {
+    updateItemsPerPage();
+    renderPage();
+});
+
+window.addEventListener('resize', debounce(() => {
+    const prevItemsPerPage = itemsPerPage;
+    updateItemsPerPage();
+
+    if (prevItemsPerPage !== itemsPerPage) {
+        renderPage();
+    }
+}, 250));
