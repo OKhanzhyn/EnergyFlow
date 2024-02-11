@@ -1,28 +1,27 @@
+import axios from 'axios';
 
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
 let defaults = 'muscles';
 const switcList = document.querySelector('.switch-list');
 const exercisesList = document.querySelector('.exercises-list');
-const screenWidth = window.innerWidth;
-let pageSize = 0;
+const mediaQuery = window.innerWidth;
+let pageSize;
 
-if (screenWidth < 375) {
-  pageSize = 8;
-}
-if (screenWidth >= 375 && screenWidth <= 768)  {
-  pageSize = 12;
-}
-else {
-  pageSize = 10;
-}
+if (window.innerWidth < 767) {
+    pageSize = 8;
+  } else {
+    pageSize = 12;
+  }
+  
+ console.log('PageSize:', pageSize);
 
 
 const exercises = await axios
   .get('/filters', {
     params: {
       filter: 'Muscles',
-      limit =  pageSize;
+      limit: pageSize,
     }
   })
   .then(({ data }) => data

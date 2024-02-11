@@ -55,8 +55,7 @@
     border-radius: 12px;
     height: 232px;
     width: 295px;
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-        url();
+    filter: brightness(.4);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -93,6 +92,7 @@
     line-height: 100%;
     text-align: center;
     color: var(--c-light);
+    text-transform: capitalize;
 }
 
 .exercises-text {
@@ -144,6 +144,7 @@
         gap: 20px;
     }
     .exercises-item {
+        width: calc(50% - 10px);
         margin-bottom: 0px;
     }
     
