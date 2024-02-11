@@ -1,9 +1,10 @@
 .fav-header {
     width: 100%;
-    /* position: absolute;*/
-    z-index: 999; 
+    position: absolute;
+    z-index: 999;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 .header-logo {
@@ -16,10 +17,8 @@
 }
 
 .fav-nav-list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 40px;
+    
+    padding: 20px;
 }
 
 .header-menu-btn {
@@ -44,7 +43,7 @@
     .header {
         margin-top: 32px;
     }
-    .fav-nav-list {
+    .nav-list {
         padding-top: 16px;
         padding-left: 32px;
         padding-right: 32px;
@@ -142,7 +141,7 @@
         margin-top: 16px;
     }
 
-    .fav-nav-list {
+    .nav-list {
         padding-top: 24px;
         padding-left: 48px;
         padding-right: 48px;
