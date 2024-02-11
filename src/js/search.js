@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const bpList = document.querySelector('.bp-list');
   const switchItems = document.querySelectorAll('.switch-item');
   let page = 1; 
-  let limit = 8; 
+  let limit = 9; 
   let filter = '';
   let subtype = '';
 

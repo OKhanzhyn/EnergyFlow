@@ -160,7 +160,7 @@
     }
 
     .hero-inner {
-        height: 884px;
+        height: 900px;
         display: grid;
         grid-template-columns: 50% 50%;
         grid-gap: 0;
