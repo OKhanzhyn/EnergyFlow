@@ -119,11 +119,11 @@ function updateItemsPerPage() {
     }
 }
 // Додавання обробника кліку для кожної кнопки пагінації
-paginationContainer.addEventListener('click', function(event) {
-    if (event.target.classList.contains('page')) {
-        currentPage = parseInt(event.target.textContent);
-        renderPage(currentPage);
-    }
-});
+// page.addEventListener('click', function(event) {
+//     if (event.target.classList.contains('page')) {
+//         currentPage = parseInt(event.target.textContent);
+//         renderPage(currentPage);
+//     }
+// });
 
  
