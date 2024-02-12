@@ -85,3 +85,6 @@ closeOnEscape:	'true',
     transitionInMobile:	'fadeOutRight',  
     closeOnEscape:	'true',
 });
+
+
+
