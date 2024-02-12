@@ -51,7 +51,7 @@
   padding: 6px 7px;
   /* top: 40px; */
   /* left: 20px; */
-  position: absolute;
+  /* position: absolute; */
   /* display: flex;
   align-items: center;
   justify-content: center; */
@@ -96,6 +96,7 @@
     width: 736px;
     height: 302px;
     padding: 64px 80px;
+    gap: 16px;
   }
 
   .quote-title {
@@ -129,6 +130,7 @@
     top: 41.6px;
     right: 86.17px;
   }
+
 
   .background-image {
     background: url('../img/quote-image_tab.webp');
