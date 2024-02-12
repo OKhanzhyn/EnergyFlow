@@ -1,11 +1,7 @@
 import { getApiInfo } from './api.js';
 import { postApiInfo } from './api.js';
 
-// Дані гіпотетичні які збережені на модальному вікні із справами
-
-// button class="add-to-favorites" > Add to favorites</button >
-// <button class="remove-from-favorites">Remove</button
-// let exercise = {
+// const exercise = {
 //   _id: exerciseId,
 //   name: exerciseName,
 //   burnedCalories: exerciseBurnedCalories,
@@ -15,7 +11,7 @@ import { postApiInfo } from './api.js';
 
 const addToFavoritesBtn = document.querySelector('.add-to-favorites-btn');
 const removeFromFavoritesBtn = document.querySelector(
-  '.remove-from-favorites-иет'
+  '.remove-from-favorites-btn'
 );
 const galleryContainer = document.querySelector('.list-favorites');
 
