@@ -1,15 +1,5 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-// get-запит
-import { getApiInfo } from './api.js'
-
-// post-запит
-import { postApiInfo } from './api.js' 
-
-// you have successfully subscribed.
-// pls, enter correct data.
-// this email is already registered, pls choose another one.
-// we're sorry, but nothing was found for your request.
 
 iziToast.warning({
     id: 'email-exists', 
@@ -41,9 +31,9 @@ iziToast.error({
   color: '#dd1e08',
   position: 'topRight',
   transitionIn: 'fadeInLeft',
-        transitionOut: 'fadeOutRight',
-        transitionInMobile: 'fadeInLeft',
-        transitionInMobile:	'fadeOutRight',
+  transitionOut: 'fadeOutRight',
+  transitionInMobile: 'fadeInLeft',
+  transitionInMobile:	'fadeOutRight',
   maxWidth: '390px',
   timeout: 5000,
     closeOnEscape:	'true',

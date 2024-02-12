@@ -40,11 +40,11 @@
     line-height: 1.12;
     letter-spacing: -2%;
     color: var(--c-light);
-        top: 20px;
-        left: 20px;
-        padding: 0;
-        position: absolute;
-        }
+    top: 20px;
+    left: 20px;
+    padding: 0;
+    position: absolute;
+    }
   .logo:hover {color: var(--c-primary-hov)}
   .logo:focus {color: var(--c-primary-hov)}
 
