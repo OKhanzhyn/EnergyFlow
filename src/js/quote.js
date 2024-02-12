@@ -3,8 +3,8 @@ import { getApiInfo } from './api.js';
 const LOCAL_KEY_DATE = 'dateNow';
 const LOCAL_KEY_QUOTE = 'quoteDay';
 
-const quotePage = document.querySelector('.description');
-const authorPage = document.querySelector('.author-quote');
+const quotePage = document.getElementById('description');
+const authorPage = document.getElementById('author-quote');
 
 function getQuote() {
   const currentDate = new Date();
