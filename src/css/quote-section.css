@@ -115,10 +115,10 @@
     margin-bottom: 25px;
   }
 
-  .author-quote {
+  /* .author-quote {
     padding-left: 130px;
     padding-bottom: 69px;
-  }
+  } */
 
   .running-man {
     top: 64px;
@@ -151,22 +151,22 @@
     padding: 64px;
   }
 
-  .quote-title {
+  /* .quote-title {
     padding-left: 114px;
     padding-right: 398px;
-  }
+  } */
 
   .description {
     font-size: 16px;
     line-height: 1.5;
-    padding-left: 114px;
-    padding-right: 64px;
+    /* padding-left: 114px;
+    padding-right: 64px; */
   }
 
-  .author-quote {
-    padding-left: 114px;
-    padding-bottom: 69px;
-  }
+  /* .author-quote {
+    /* padding-left: 114px;
+    padding-bottom: 69px; */
+  /* } */ 
 
   .running-man {
     left: 64px;
