@@ -1,18 +1,8 @@
 .fav-header {
   width: 100%;
-  position: absolute;
   z-index: 999;
   align-items: center;
   justify-content: space-between;
-}
-
-.header-logo {
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 112%;
-  letter-spacing: -0.02em;
-  color: var(--c-black);
 }
 
 .nav-list.fav {
@@ -22,102 +12,23 @@
   justify-content: space-between;
 }
 
-.header-menu-btn {
-  border: none;
-  background-color: transparent;
-}
-
-.icon-menu {
-  stroke: var(--c-primary);
-}
-
-@media screen and (max-width: 767.98px) {
-  .header-btns {
-    display: none;
-  }
-  .header-contacts {
-    display: none;
-  }
-}
 
 @media screen and (min-width: 768px) {
   .header {
     margin-top: 32px;
   }
   .nav-list.fav {
-    padding: 40px;
+    padding: 48px 32px;
   }
 
-  .icon-menu {
-    display: none;
-  }
-  .header-btns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 211px;
-    height: 52px;
-    display: flex;
-    padding: 8px 16px;
-    text-align: center;
-    justify-content: center;
-    border-radius: 60px;
-    border: none;
-    background-color: var(--c-primary);
-  }
-
-  .header-menu-btn {
-    display: none;
-  }
-
-  .header-logo {
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 100%;
-    letter-spacing: -0.02em;
-  }
 }
 
-.header-socials {
-  display: flex;
-  gap: 12px;
-}
-
-.header-socials-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(126, 132, 127, 0.2);
-  border-radius: 10px;
-  padding: 8px;
-  width: 44px;
-  height: 44px;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.header-socials-icon {
-  fill: var(--c-primary);
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.header-socials-icon:hover,
-.header-socials-icon:active,
-.header-socials-icon:focus {
-  fill: #5f6560;
-}
-
-.header-socials-item:hover,
-.header-socials-item:active,
-.header-socials-item:focus {
-  border: 1px solid rgba(95, 101, 96, 0.2);
-}
-
-.nav-menu {
+.fav-nav-menu {
   display: flex;
   gap: 16px;
 }
 
-.header-page {
+.fav-header-page {
   border: none;
   border-radius: 30px;
   color: var(--c-light);
@@ -126,9 +37,9 @@
   padding-top: 6px;
 }
 
-.active {
+.fav-active {
   border-radius: 30px;
-  padding: 6px 26px;
+  padding: 6px 14px;
   width: 96px;
   height: 36px;
   background-color: var(--c-light);
@@ -137,11 +48,8 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .header {
-    margin-top: 16px;
-  }
-
+  
   .nav-list.fav {
-    padding: 40px;
+    padding: 40px 48px;
   }
 }
