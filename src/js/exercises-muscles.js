@@ -169,7 +169,7 @@ function addPagPages(page, totalPages) {
   let paginationHtml = '';
 
   for (let i = 1; i <= totalPages; i += 1) {
-    paginationHtml += `<button class="page is-active" type="button">${i}</button>`;
+    paginationHtml += `<li><button class="page is-active" type="button">${i}</button></li>`;
   }
   return paginationHtml;
 }
