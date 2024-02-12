@@ -13,8 +13,10 @@ import { postApiInfo } from './api.js';
 //   target: exerciseTarget,
 // };
 
-const addToFavoritesBtn = document.querySelector('.add-to-favorites');
-const removeFromFavoritesBtn = document.querySelector('.remove-from-favorites');
+const addToFavoritesBtn = document.querySelector('.add-to-favorites-btn');
+const removeFromFavoritesBtn = document.querySelector(
+  '.remove-from-favorites-иет'
+);
 const galleryContainer = document.querySelector('.list-favorites');
 
 // Отримуємо вправу з локального сховища якщо вона там є, якщо так то приховуємо кнопку "Add to favorites", якщо ні ховаємо "Remove"
