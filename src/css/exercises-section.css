@@ -11,12 +11,10 @@
 
 .exercises-container {
     border-radius: 30px;
-    height: 2252px;
     max-width: 335px;
     background-color: var(--c-bg-light);
     padding: 40px 20px;
-    margin-top: 20px;
-    
+      
 }
 
 .switch-item {
@@ -120,7 +118,6 @@
     }
     .exercises-container {
         border-radius: 50px;
-        height: 1918px;
         max-width: 736px;
         padding: 60px;
     }
@@ -161,7 +158,6 @@
 
 @media only screen and (min-width: 1440px) {
     .exercises-container {
-        height: 1178px;
         max-width: 1408px;
     }
     .exercises-item {
