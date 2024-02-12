@@ -1,6 +1,3 @@
-.section-favorites {
-  margin: 20px auto;
-}
 .container-favorites {
   background-color: var(--c-bg-light);
   padding: 40px 20px;
@@ -127,9 +124,6 @@ button {
 }
 
 @media screen and (min-width: 768px) {
-  .section-favorites {
-    margin: 16px auto;
-  }
   .container-favorites {
     padding: 64px 48px;
     min-height: 928px;
