@@ -10,7 +10,7 @@ import { postApiInfo } from './api.js';
 // };
 
 const addToFavoritesBtn = document.querySelector('.add-to-favorites-btn');
-const removeFromFavoritesBtn = document.querySelector(
+const removeFromFavoritesBtn = document.querySelectorAll(
   '.remove-from-favorites-btn'
 );
 const galleryContainer = document.querySelector('.list-favorites');
@@ -27,7 +27,8 @@ addToFavoritesBtn.addEventListener('click', () => {
   // Зберігаємо вправу в локальне сховище
   localStorage.setItem('favoriteExercise', JSON.stringify(exercise));
   // Додаємо вправу до галереї
-  galleryContainer.innerHTML += `
+
+  const exerciseHTML = `
     <li class="item-favorites" data-id="${exercise._id}">
             <div class="workout-block">
               <p class="workout-title">Workout</p>
@@ -71,7 +72,8 @@ addToFavoritesBtn.addEventListener('click', () => {
             </ul>
           </li>
     `;
-
+  galleryContainer.insertAdjacentHTML('beforeend', exerciseHTML);
+  document.querySelector('.message-block-favorites').style.display = 'none';
   addToFavoritesBtn.style.display = 'none';
   removeFromFavoritesBtn.style.display = 'block';
 });
