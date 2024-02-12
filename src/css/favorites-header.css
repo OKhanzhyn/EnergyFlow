@@ -5,7 +5,7 @@
   justify-content: space-between;
 }
 
-.nav-list.fav {
+.fav-nav-list {
   padding: 40px;
   display: flex;
   align-items: center;
@@ -14,10 +14,7 @@
 
 
 @media screen and (min-width: 768px) {
-  .header {
-    margin-top: 32px;
-  }
-  .nav-list.fav {
+  .fav-nav-list {
     padding: 48px 32px;
   }
 
@@ -48,8 +45,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  
-  .nav-list.fav {
+  .fav-nav-list {
     padding: 40px 48px;
   }
 }
