@@ -2,16 +2,16 @@ import { getApiInfo } from './api.js';
 
 // Вибір з DOM
 const switchItems = document.querySelectorAll('.switch-item');
-const cardContainer = document.querySelector(".exercises-list");
+const cardContainer = document.querySelector(".bp-list");
 const paginationContainer = document.querySelector('.exercises-page');
 
 // Для пагінації
-let itemsPerPage = 8; 
-let currentPage = 1; 
+let itemsPerPage = 8;
+let currentPage = 1;
 
 // Для брейкпойнтів
-const mobileBreakpoint = 768; 
-const tabletBreakpoint = 1440; 
+const mobileBreakpoint = 768;
+const tabletBreakpoint = 1440;
 
 // Затримувач для resize
 function debounce(func, wait) {
@@ -57,7 +57,7 @@ async function renderPage() {
             return;
         }
         // Для запиту
-        const query = activeContainer.textContent.trim().toLowerCase(); 
+        const query = activeContainer.textContent.trim().toLowerCase();
         if (!query) {
             console.error('Query is undefined');
             return;
@@ -95,7 +95,8 @@ function renderPagination(totalPages) {
 
     const paginationItems = paginationContainer.querySelectorAll('.page');
     paginationItems.forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (event) => {
+            event.preventDefault(); // Додали preventDefault()
             currentPage = parseInt(item.textContent);
             renderPage();
         });
@@ -111,18 +112,28 @@ async function renderExerciseCards(exerciseData) {
         }
 
         console.log("Rendering exercise cards with data:", exerciseData);
-        
+
+        if (!cardContainer) {
+            console.error('Card container not found');
+            return;
+        }
+
         let markup = '';
         exerciseData.forEach(exercise => {
             markup += template(exercise);
         });
-        
+
         cardContainer.innerHTML = markup;
 
         const exerciseCards = document.querySelectorAll('.exercise-card');
         exerciseCards.forEach(card => {
             card.addEventListener('click', () => {
                 console.log('Clicked on exercise:', card.querySelector('h2').textContent);
+
+                // Змінюємо віжуалі-хідден для контейнера .bp-list
+                cardContainer.classList.remove('visual-hidden');
+                // Змінюємо віжуалі-хідден для картки, яка була натиснута
+                card.classList.add('visual-hidden');
             });
         });
     } catch (error) {
