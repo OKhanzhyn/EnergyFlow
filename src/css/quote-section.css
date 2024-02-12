@@ -52,8 +52,6 @@
   position: absolute;
   top: 40px;
   right: 20px;
-  width: 28px;
-  height: 28px;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -106,6 +104,11 @@
   .element-commas {
     top: 41.6px;
     right: 86.17px;
+  }
+
+  .icon-commas {
+    width: 48px;
+    height: 48px;
   }
 
 
