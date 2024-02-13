@@ -1,21 +1,39 @@
-export const itemsPerPage = 8;
-export let currentPage = 1;
+import Pagination from 'tui-pagination';
 
-export const mobileBreakpoint = 768;
-export const tabletBreakpoint = 1440;
-
-export function renderPagination(container, currentPage, totalPages) {
-  if (!container) {
-    console.error('Pagination container not found');
-    return;
+function createPaginationFilters(totalPages) {
+  if (window.innerWidth < 768) {
+    pageSize = 8;
+  } else {
+    pageSize = 12;
   }
 
-  let paginationHTML = '';
-  for (let i = 1; i <= totalPages; i++) {
-    paginationHTML += (
-      `<button class="page ${i === currentPage ? 'is-active' : ''}">${i}</button>`
-    );
-  }
+  const paginationContainer = document.querySelector('.tui-pagination');
+  const instance = new Pagination(paginationContainer, {
+    totalItems: pageSize * totalPages,
+    itemsPerPage: pageSize,
+    visiblePages: 3,
+    centerAlign: true,
+  });
 
-  return paginationHTML;
+  return instance;
 }
+
+function createPaginationSubFilters(totalPages) {
+  if (window.innerWidth < 768) {
+    pageSize = 8;
+  } else {
+    pageSize = 9;
+  }
+
+  const paginationContainer = document.querySelector('.tui-pagination');
+  const instance = new Pagination(paginationContainer, {
+    totalItems: pageSize * totalPages,
+    itemsPerPage: pageSize,
+    visiblePages: 3,
+    centerAlign: true,
+  });
+
+  return instance;
+}
+
+export { createPaginationFilters, createPaginationSubFilters };

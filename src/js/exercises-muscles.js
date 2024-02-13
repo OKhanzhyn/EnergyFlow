@@ -12,6 +12,9 @@ let pageSize = 8;
 let currentPage = 1;
 let defaultPage = 'Muscles';
 
+switcList.addEventListener('click', filterBtn);
+pagContainer.addEventListener('click', onPagination);
+
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -74,9 +77,6 @@ async function getExercises() {
 
 getExercises();
 
-switcList.addEventListener('click', filterBtn);
-pagContainer.addEventListener('click', onPagination);
-
 async function filterBtn(event) {
   event.preventDefault();
 
@@ -84,12 +84,12 @@ async function filterBtn(event) {
     return;
   }
 
+  exercisesList.innerHTML = '';
   currentPage = 1;
   const filterValue = event.target;
   const query = filterValue.dataset.filter;
   defaultPage = query;
-
-  exercisesList.innerHTML = '';
+  pagContainer.innerHTML = '';
 
   Array.from(event.currentTarget.children).map(item => {
     if (item.textContent !== event.target.textContent) {
@@ -109,30 +109,31 @@ async function filterBtn(event) {
       const { page, totalPages, results } = data;
 
       exercisesList.innerHTML = createMarkup(results);
-      pagContainer.innerHTML = '';
 
       if (totalPages > 1) {
         const pagination = addPagPages(page, totalPages);
         pagContainer.innerHTML = pagination;
+      } else {
+        pagContainer.innerHTML = '';
       }
     });
-  } catch {}
+  } catch {
+    console.error('oops');
+  }
 }
 
 function createMarkup(results) {
   const markUp = results
     .map(
       ({ name, filter, imgUrl }) =>
-        `<li class="exercises-item">
-          <a class="exercises-link" href="">
+        `<li class="exercises-item" data-filter="${filter}" data-name="${name}">         
           <div class="image-container">
-              <img class="exercises-image" src="${imgUrl}"/>
-              <div class="text-container">
-                <h3 class="exercises-title">${name}</h3>
-                <p class="exercises-text">${filter}</p>
-              </div>
+            <img class="exercises-image" src="${imgUrl}" alt="${filter}"/>
+            <div class="text-container">
+              <h3 class="exercises-title">${name}</h3>
+              <p class="exercises-text">${filter}</p>
             </div>
-          </a>
+          </div>
          </li>`
     )
     .join('');
@@ -140,22 +141,24 @@ function createMarkup(results) {
 }
 
 async function onPagination(event) {
-  currentPage = Number(event.target.textContent);
+  event.preventDefault();
 
   console.log(currentPage);
-
+  currentPage = event.target.textContent;
   Array.from(event.currentTarget.children).map(item => {
     if (item.textContent !== currentPage) {
-      item.classList.remove('is-active');
+      item.classList.remove('button-is-active');
     } else {
-      event.target.classList.add('is-active');
+      event.target.classList.add('button-is-active');
     }
   });
 
   exercisesList.innerHTML = '';
 
   try {
-    const { page, totalPages, results } = await getExercises();
+    const { page, totalPages, results } = await getExercises({
+      page: currentPage,
+    });
     if (page === totalPages) {
       return;
     }
@@ -169,7 +172,7 @@ function addPagPages(page, totalPages) {
   let paginationHtml = '';
 
   for (let i = 1; i <= totalPages; i += 1) {
-    paginationHtml += `<button class="page is-active" type="button">${i}</button>`;
+    paginationHtml += `<li><button class="page button-is-active" type="button">${i}</button></li>`;
   }
   return paginationHtml;
 }
