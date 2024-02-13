@@ -1,4 +1,3 @@
-
 .title-exercises {
     font-weight: 400;
     font-size: 32px;
@@ -6,7 +5,10 @@
     letter-spacing: -0.02em;
     color: var(--c-black);
     margin-bottom: 25px;
+}
 
+.exercise-title-wrapper {
+    display: flex;
 }
 
 .exercises-container {
@@ -14,7 +16,6 @@
     max-width: 335px;
     background-color: var(--c-bg-light);
     padding: 40px 20px;
-      
 }
 
 .switch-item {
@@ -29,6 +30,7 @@
     border: none;
     box-shadow: none;
 }
+
 .is-active {
     background-color: var(--c-primary);
     color: var(--c-light);
@@ -44,6 +46,7 @@
 .exercises-list {
     margin-bottom: 20px;
 }
+
 .exercises-item {
     margin-bottom: 20px;
 }
@@ -58,6 +61,7 @@
     background-position: center;
     position: relative;
 }
+
 .exercises-page {
     display: flex;
     justify-content: center;
@@ -98,6 +102,7 @@
     line-height: 150%;
     color: var(--c-light-tr40);
 }
+
 .image-container {
     position: relative;
 }

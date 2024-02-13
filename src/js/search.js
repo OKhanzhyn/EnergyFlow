@@ -1,25 +1,43 @@
-import { getApiInfo } from './api.js';
-import { postApiInfo } from './api.js';
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+  const formWrapper = document.querySelector('.bp-form-wraper');
+  const musclesFilter = document.querySelector('[data-filter="Muscles"]');
+  const filters = document.querySelectorAll('.switch-item');
   const form = document.getElementById('bp-form');
   const searchInput = document.querySelector('.bp-search-input');
   const bpList = document.querySelector('.bp-list');
   const switchItems = document.querySelectorAll('.switch-item');
   let page = 1; 
   let limit = 9; 
-  let filter = '';
+  let selectedFilter = '';
   let subtype = '';
 
-    switchItems.forEach(item => {
-        item.addEventListener('click', function() {
-    switchItems.forEach(element => {
-        element.classList.remove('is-active');
+  // Функція для відображення форми пошуку та приховування фільтрів
+  function toggleFormAndFilters(activeFilter) {
+    // Приховуємо форму пошуку для "Muscles", а для інших показуємо
+    if (activeFilter === musclesFilter) {
+      formWrapper.classList.add('visually-hidden');
+    } else {
+      formWrapper.classList.remove('visually-hidden');
+    }
+
+    // Знімаємо клас visually-hidden у всіх фільтрів
+    filters.forEach(f => f.classList.remove('visually-hidden'));
+    // Приховуємо вибраний фільтр
+    activeFilter.classList.add('visually-hidden');
+  }
+
+  // Додаємо обробник події на кожний фільтр
+  filters.forEach(filter => {
+    filter.addEventListener('click', function() {
+      // Оновлюємо значення selectedFilter при зміні вибраного фільтру
+      selectedFilter = this.textContent.trim();
+      // Встановлюємо активний клас для вибраного фільтру
+      filters.forEach(f => f.classList.remove('is-active'));
+      this.classList.add('is-active');
+      // Викликаємо функцію для відображення/приховування форми та фільтрів
+      toggleFormAndFilters(this);
     });
-    this.classList.add('is-active');
-        filter = this.textContent.trim();
-    });
-});
+  });
 
   form.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -30,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     axios.get(`/api/exercises`, {
       params: {
         search: searchTerm,
-        filter: filter,
+        filter: selectedFilter,
         subtype: subtype,
         page: page,
         limit: limit
@@ -54,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
     })
-        .catch(error => {
-            error;
+    .catch(error => {
+      error;
     });
   });
 });
