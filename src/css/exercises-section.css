@@ -11,12 +11,10 @@
 
 .exercises-container {
     border-radius: 30px;
-    height: 2252px;
     max-width: 335px;
     background-color: var(--c-bg-light);
     padding: 40px 20px;
-    margin-top: 20px;
-    
+      
 }
 
 .switch-item {
@@ -77,8 +75,7 @@
     background-color: var(--c-bg-light); ;
 }
 
-.page:active,
-.page:hover {
+.button-is-active {
     border: 1.5px solid var(--c-black);
     border-radius: 18px;
     width: 31px;
@@ -120,7 +117,6 @@
     }
     .exercises-container {
         border-radius: 50px;
-        height: 1918px;
         max-width: 736px;
         padding: 60px;
     }
@@ -152,8 +148,7 @@
         font-size: 24px;
         line-height: 133%;
     }
-    .page:active,
-    .page:hover {
+    .button-is-active {
         width: 32px;
     }   
 
@@ -161,15 +156,13 @@
 
 @media only screen and (min-width: 1440px) {
     .exercises-container {
-        height: 1178px;
         max-width: 1408px;
     }
-    .exercises-item {
-        margin-bottom: 20px;
-    }
+   
     .exercises-item {
         width: calc(25% - 20px);
         box-sizing: border-box;
+        margin-bottom: 20px;
     }
 
 }
