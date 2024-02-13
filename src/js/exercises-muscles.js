@@ -83,13 +83,11 @@ async function filterBtn(event) {
   if (event.target.tagName !== 'BUTTON') {
     return;
   }
-
+  exercisesList.innerHTML = '';
   currentPage = 1;
   const filterValue = event.target;
   const query = filterValue.dataset.filter;
   defaultPage = query;
-
-  exercisesList.innerHTML = '';
 
   Array.from(event.currentTarget.children).map(item => {
     if (item.textContent !== event.target.textContent) {
@@ -111,7 +109,7 @@ async function filterBtn(event) {
       exercisesList.innerHTML = createMarkup(results);
       pagContainer.innerHTML = '';
 
-      if (totalPages > 1) {
+      if (1) {
         const pagination = addPagPages(page, totalPages);
         pagContainer.innerHTML = pagination;
       }
@@ -123,16 +121,14 @@ function createMarkup(results) {
   const markUp = results
     .map(
       ({ name, filter, imgUrl }) =>
-        `<li class="exercises-item">
-          <a class="exercises-link" href="">
+        `<li class="exercises-item" data-filter="${filter}" data-name="${name}">         
           <div class="image-container">
-              <img class="exercises-image" src="${imgUrl}"/>
-              <div class="text-container">
-                <h3 class="exercises-title">${name}</h3>
-                <p class="exercises-text">${filter}</p>
-              </div>
+            <img class="exercises-image" src="${imgUrl}" alt="${filter}"/>
+            <div class="text-container">
+              <h3 class="exercises-title">${name}</h3>
+              <p class="exercises-text">${filter}</p>
             </div>
-          </a>
+          </div>
          </li>`
     )
     .join('');
@@ -146,9 +142,9 @@ async function onPagination(event) {
 
   Array.from(event.currentTarget.children).map(item => {
     if (item.textContent !== currentPage) {
-      item.classList.remove('is-active');
+      item.classList.remove('button-is-active');
     } else {
-      event.target.classList.add('is-active');
+      event.target.classList.add('button-is-active');
     }
   });
 
@@ -169,7 +165,7 @@ function addPagPages(page, totalPages) {
   let paginationHtml = '';
 
   for (let i = 1; i <= totalPages; i += 1) {
-    paginationHtml += `<li><button class="page is-active" type="button">${i}</button></li>`;
+    paginationHtml += `<li><button class="page button-is-active" type="button">${i}</button></li>`;
   }
   return paginationHtml;
 }
