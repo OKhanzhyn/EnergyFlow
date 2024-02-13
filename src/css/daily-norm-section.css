@@ -46,7 +46,7 @@
 
     height: 269px;
     max-width: 335px;
-    margin: 20px auto auto;
+    /* margin: 20px auto auto; */
     border-radius: 30px;
 
     background-size: cover;
@@ -114,7 +114,7 @@
     .daily-norm-pic {
         max-width: 736px;
         height: 300px; 
-        margin: 16px auto auto;
+        /* margin: 16px auto auto; */
         border-radius: 50px;
 
         background-size: cover; 
@@ -191,7 +191,7 @@
         background-size: cover; 
         background-position: center; 
         width: 100%;
-        margin: 16px auto auto;
+        /* margin: 16px auto auto; */
         border-radius: 50px;
     }
 
@@ -202,7 +202,7 @@
         color: var( --c-light-tr60);
         max-width: 704px;
         min-height: 302px;
-        margin-top: 16px;
+        /* margin-top: 16px; */
         font-size: 14px;
         position: relative;
 
