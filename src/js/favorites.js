@@ -1,9 +1,8 @@
 import { getApiInfo } from './api.js';
 import { postApiInfo } from './api.js';
 
-
 const addToFavoritesBtn = document.querySelector('.add-to-favorites-btn');
-const removeFromFavoritesBtn = document.querySelectorAll(
+const removeFromFavoritesBtn = document.querySelector(
   '.remove-from-favorites-btn'
 );
 const galleryContainer = document.querySelector('.list-favorites');
