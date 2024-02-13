@@ -1,14 +1,6 @@
 import { getApiInfo } from './api.js';
 import { postApiInfo } from './api.js';
 
-// import axios from 'axios';
-// const exercise = {
-//   _id: exerciseId,
-//   name: exerciseName,
-//   burnedCalories: exerciseBurnedCalories,
-//   bodyPart: exerciseBodyPart,
-//   target: exerciseTarget,
-// };
 
 const addToFavoritesBtn = document.querySelector('.add-to-favorites-btn');
 const removeFromFavoritesBtn = document.querySelectorAll(
