@@ -148,8 +148,7 @@
         font-size: 24px;
         line-height: 133%;
     }
-    .page:active,
-    .page:hover {
+    .button-is-active {
         width: 32px;
     }   
 
@@ -159,12 +158,11 @@
     .exercises-container {
         max-width: 1408px;
     }
-    .exercises-item {
-        margin-bottom: 20px;
-    }
+   
     .exercises-item {
         width: calc(25% - 20px);
         box-sizing: border-box;
+        margin-bottom: 20px;
     }
 
 }
