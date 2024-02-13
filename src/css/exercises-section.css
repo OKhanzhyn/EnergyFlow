@@ -75,8 +75,7 @@
     background-color: var(--c-bg-light); ;
 }
 
-.page:active,
-.page:hover {
+.button-is-active {
     border: 1.5px solid var(--c-black);
     border-radius: 18px;
     width: 31px;
