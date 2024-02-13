@@ -6,7 +6,7 @@
   padding: 40px 20px;
   width: 100%;
   border-radius: 30px;
-  min-height: 450px;
+  height: 450px;
 }
 .title-favorites {
   font-size: 32px;
@@ -132,7 +132,7 @@ button {
   }
   .container-favorites {
     padding: 64px 48px;
-    min-height: 928px;
+    height: 928px;
   }
   .title-favorites {
     font-size: 44px;
@@ -168,11 +168,8 @@ button {
   .container-favorites {
     max-height: 687px;
   }
-  .title-favorites {
-    margin-bottom: 246px;
-  }
   .message-block-favorites {
-    margin: 208px auto 0 auto;
+    margin: 146px auto 0 auto;
   }
   .item-favorites {
     width: 424px;
