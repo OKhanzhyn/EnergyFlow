@@ -12,6 +12,9 @@ let pageSize = 8;
 let currentPage = 1;
 let defaultPage = 'Muscles';
 
+switcList.addEventListener('click', filterBtn);
+pagContainer.addEventListener('click', onPagination);
+
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -74,20 +77,19 @@ async function getExercises() {
 
 getExercises();
 
-switcList.addEventListener('click', filterBtn);
-pagContainer.addEventListener('click', onPagination);
-
 async function filterBtn(event) {
   event.preventDefault();
 
   if (event.target.tagName !== 'BUTTON') {
     return;
   }
+
   exercisesList.innerHTML = '';
   currentPage = 1;
   const filterValue = event.target;
   const query = filterValue.dataset.filter;
   defaultPage = query;
+  pagContainer.innerHTML = '';
 
   Array.from(event.currentTarget.children).map(item => {
     if (item.textContent !== event.target.textContent) {
@@ -107,14 +109,17 @@ async function filterBtn(event) {
       const { page, totalPages, results } = data;
 
       exercisesList.innerHTML = createMarkup(results);
-      pagContainer.innerHTML = '';
 
-      if (1) {
+      if (totalPages > 1) {
         const pagination = addPagPages(page, totalPages);
         pagContainer.innerHTML = pagination;
+      } else {
+        pagContainer.innerHTML = '';
       }
     });
-  } catch {}
+  } catch {
+    console.error('oops');
+  }
 }
 
 function createMarkup(results) {
@@ -136,10 +141,10 @@ function createMarkup(results) {
 }
 
 async function onPagination(event) {
-  currentPage = Number(event.target.textContent);
+  event.preventDefault();
 
   console.log(currentPage);
-
+  currentPage = event.target.textContent;
   Array.from(event.currentTarget.children).map(item => {
     if (item.textContent !== currentPage) {
       item.classList.remove('button-is-active');
@@ -151,7 +156,9 @@ async function onPagination(event) {
   exercisesList.innerHTML = '';
 
   try {
-    const { page, totalPages, results } = await getExercises();
+    const { page, totalPages, results } = await getExercises({
+      page: currentPage,
+    });
     if (page === totalPages) {
       return;
     }
