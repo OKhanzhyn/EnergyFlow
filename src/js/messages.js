@@ -1,14 +1,7 @@
-// get-запит
-import { getApiInfo } from './api.js'
 
-// post-запит
-import { postApiInfo } from './api.js' 
+export { emailExist, wrongSearchData, foundNothing, enterSuccess };
 
-// you have successfully subscribed.
-// pls, enter correct data.
-// this email is already registered, pls choose another one.
-// we're sorry, but nothing was found for your request.
-
+function emailExist () {
 iziToast.warning({
     id: 'email-exists', 
     class: 'email-exists',
@@ -26,8 +19,11 @@ iziToast.warning({
     maxWidth: '390px',
     timeout: 5000,
       closeOnEscape:	'true',
-}); 
+});
+}
 
+
+function wrongSearchData () {
 iziToast.error({
   id: 'wrong-search-data', 
   class: 'wrong-search-data',
@@ -39,14 +35,16 @@ iziToast.error({
   color: '#dd1e08',
   position: 'topRight',
   transitionIn: 'fadeInLeft',
-        transitionOut: 'fadeOutRight',
-        transitionInMobile: 'fadeInLeft',
-        transitionInMobile:	'fadeOutRight',
+  transitionOut: 'fadeOutRight',
+  transitionInMobile: 'fadeInLeft',
+  transitionInMobile:	'fadeOutRight',
   maxWidth: '390px',
   timeout: 5000,
     closeOnEscape:	'true',
 }); 
+}
 
+function foundNothing () {
 iziToast.info({
 id: 'found-nothing', 
 class: 'found-nothing',
@@ -54,8 +52,6 @@ message: "we're sorry, but nothing was found for your request.",
 theme: 'dark',
 messageSize: '18px',
 messageColor: 'white',
-//  backgroundColor: '#07051133',
-//  color: '#07051133',
 position: 'topRight',
 transitionIn: 'fadeInLeft',
 transitionOut: 'fadeOutRight',
@@ -65,7 +61,9 @@ maxWidth: '390px',
 timeout: 5000,
 closeOnEscape:	'true',
 }); 
+}
 
+function enterSuccess () {
   iziToast.success({
     id: 'enter-success', 
     class: 'enter-success', 
@@ -74,8 +72,7 @@ closeOnEscape:	'true',
     messageSize: '18px',
     messageLineHeight: '1.2',
     backgroundColor: '#F6F6F6',
-    //theme: 'light', // dark
-    color: '#F6F6F6', // blue, red, green, yellow
+    color: '#F6F6F6',
     maxWidth: '390px',
     position: 'topRight',
     timeout: 5000,
@@ -85,6 +82,6 @@ closeOnEscape:	'true',
     transitionInMobile:	'fadeOutRight',  
     closeOnEscape:	'true',
 });
-
+}
 
 

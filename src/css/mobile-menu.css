@@ -18,10 +18,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* min-width: 320px;
-    max-height: 771px; */
     border-radius: 30px;
-     padding-bottom: 40px;
+    padding-bottom: 40px;
     background-color: var(--c-primary);
     z-index: 999;
     transform: translateX(100%);
