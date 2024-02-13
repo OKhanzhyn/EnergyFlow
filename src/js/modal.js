@@ -5,9 +5,6 @@ import { getApiInfo } from './api.js'
 const modalExBtn = document.querySelector('.bp-start-button');
 const modalWindow = document.querySelector('.backdrop');
 
-
-
-
 modalExBtn.addEventListener("click", handleModal);
 
 async function handleModal(event) {
@@ -17,7 +14,7 @@ async function handleModal(event) {
   const cardId = liEl.dataset.id;
   console.log(cardId);
   try {
-    const card = await axios.get('https://energyflow.b.goit.study/api/exercises/64f389465ae26083f39b17a4');
+    const card = await axios.get('https://energyflow.b.goit.study/api/exercises/${cardId}');
 console.log(card.data);
     createModalMarkup(card.data);
     
