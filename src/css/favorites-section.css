@@ -1,6 +1,3 @@
-.section-favorites {
-  margin: 20px auto;
-}
 .container-favorites {
   background-color: var(--c-bg-light);
   padding: 40px 20px;
@@ -30,11 +27,14 @@
 }
 
 /* Favorite item */
-.gallery-favorites {
+.list-favorites {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 20px;
+  overflow: auto;
+  max-height: 535px;
+  border-radius: 15px;
 }
 .item-favorites {
   position: relative;
@@ -127,12 +127,9 @@ button {
 }
 
 @media screen and (min-width: 768px) {
-  .section-favorites {
-    margin: 16px auto;
-  }
   .container-favorites {
     padding: 64px 48px;
-    min-height: 928px;
+    height: 928px;
   }
   .title-favorites {
     font-size: 44px;
@@ -150,8 +147,11 @@ button {
     font-size: 18px;
     line-height: 133%;
   }
-  .gallery-favorites {
+  .list-favorites {
     margin-top: 32px;
+    gap: 14px;
+    row-gap: 20px;
+    max-height: 720px;
   }
   .item-favorites {
     width: 313px;
@@ -168,11 +168,13 @@ button {
   .container-favorites {
     max-height: 687px;
   }
-  .title-favorites {
-    margin-bottom: 246px;
-  }
   .message-block-favorites {
-    margin: 208px auto 0 auto;
+    margin: 146px auto 0 auto;
+  }
+  .list-favorites {
+    gap: 20px;
+    row-gap: 28px;
+    max-height: 479px;
   }
   .item-favorites {
     width: 424px;

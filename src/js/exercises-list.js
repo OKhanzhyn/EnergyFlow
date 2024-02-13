@@ -2,16 +2,16 @@ import { getApiInfo } from './api.js';
 
 // Вибір з DOM
 const switchItems = document.querySelectorAll('.switch-item');
-const cardContainer = document.querySelector(".exercises-list");
+const cardContainer = document.querySelector(".bp-list");
 const paginationContainer = document.querySelector('.exercises-page');
 
 // Для пагінації
-let itemsPerPage = 8; 
-let currentPage = 1; 
+let itemsPerPage = 8;
+let currentPage = 1;
 
 // Для брейкпойнтів
-const mobileBreakpoint = 768; 
-const tabletBreakpoint = 1440; 
+const mobileBreakpoint = 768;
+const tabletBreakpoint = 1440;
 
 // Затримувач для resize
 function debounce(func, wait) {
@@ -57,7 +57,7 @@ async function renderPage() {
             return;
         }
         // Для запиту
-        const query = activeContainer.textContent.trim().toLowerCase(); 
+        const query = activeContainer.textContent.trim().toLowerCase();
         if (!query) {
             console.error('Query is undefined');
             return;
@@ -102,6 +102,40 @@ function renderPagination(totalPages) {
     });
 }
 
+// // Додавання обробника подій до кожного елемента карток вправ
+// const exercisesListItems = document.querySelectorAll('.exercises-item');
+// exercisesListItems.forEach(item => {
+//     item.addEventListener('click', (event) => {
+//         event.preventDefault();
+//         // Знаходимо батьківський елемент картки з класом bp-item
+//         const bpItem = item.closest('.bp-item');
+//         if (bpItem) {
+//             // Видаляємо клас 'visually-hidden' з bp-item, щоб показати його
+//             bpItem.classList.remove('visually-hidden');
+//             // Додаємо клас 'visually-hidden' до елемента exercises-item, щоб сховати його
+//             item.classList.add('visually-hidden');
+//             renderPage();
+//         }
+//     });
+// });
+
+
+const exercisesList = document.querySelector('.exercises-list');
+exercisesList.addEventListener('click', function(event) {
+    const targetItem = event.target.closest('.exercises-item');
+    if (targetItem) {
+        event.preventDefault();
+        const bpList = document.querySelector('.bp-list');
+        if (bpList) {
+            bpList.classList.remove('visually-hidden');
+            bpList.style.display = 'block'; 
+        }
+        // Після відображення bp-list приховуємо exercises
+        exercisesList.classList.add('visually-hidden');
+        renderPage();
+    }
+});
+
 // Рендеринг карток вправ
 async function renderExerciseCards(exerciseData) {
     try {
@@ -111,19 +145,17 @@ async function renderExerciseCards(exerciseData) {
         }
 
         console.log("Rendering exercise cards with data:", exerciseData);
-        
+
         let markup = '';
         exerciseData.forEach(exercise => {
-            markup += template(exercise);
+            markup += renderExerciseCardMarkup(exercise); 
         });
-        
+
         cardContainer.innerHTML = markup;
 
         const exerciseCards = document.querySelectorAll('.exercise-card');
         exerciseCards.forEach(card => {
-            card.addEventListener('click', () => {
-                console.log('Clicked on exercise:', card.querySelector('h2').textContent);
-            });
+            card.addEventListener('click', (event) => handleExerciseCardClick(card, event));
         });
     } catch (error) {
         console.error('Error rendering exercise cards:', error);
@@ -131,7 +163,7 @@ async function renderExerciseCards(exerciseData) {
 }
 
 // Шаблон для картки вправ
-function template(exercise) {
+function renderExerciseCardMarkup(exercise) {
     return `
     <li class="bp-item">
     <div class="bp-exercisecard-wraper">
@@ -208,6 +240,12 @@ switchItems.forEach(item => {
 window.addEventListener('load', () => {
     updateItemsPerPage();
     renderPage();
+
+    // Обробника кліку до кожного елемента карток вправ
+    const exercisesListItems = document.querySelectorAll('.exercises-item');
+    exercisesListItems.forEach(card => {
+        card.addEventListener('click', (event) => handleExerciseCardClick(event));
+    });
 });
 
 window.addEventListener('resize', debounce(() => {
@@ -218,3 +256,4 @@ window.addEventListener('resize', debounce(() => {
         renderPage();
     }
 }, 250));
+
