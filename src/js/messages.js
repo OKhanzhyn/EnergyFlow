@@ -4,12 +4,15 @@ import { getApiInfo } from './api.js'
 // post-запит
 import { postApiInfo } from './api.js' 
 
+import iziToast from 'izitoast'
+
 // you have successfully subscribed.
 // pls, enter correct data.
 // this email is already registered, pls choose another one.
 // we're sorry, but nothing was found for your request.
 
-iziToast.warning({
+export function warningEmail() {
+  iziToast.warning({
     id: 'email-exists', 
     class: 'email-exists',
     message: "this email is already registered, pls choose another one.",
@@ -26,9 +29,11 @@ iziToast.warning({
     maxWidth: '390px',
     timeout: 5000,
       closeOnEscape:	'true',
-}); 
+})
+} 
 
-iziToast.error({
+export function errorNotification() {
+  iziToast.error({
   id: 'wrong-search-data', 
   class: 'wrong-search-data',
   message: "pls, enter correct data.",
@@ -46,8 +51,11 @@ iziToast.error({
   timeout: 5000,
     closeOnEscape:	'true',
 }); 
+}
 
-iziToast.info({
+
+function info() {
+ iziToast.info({
 id: 'found-nothing', 
 class: 'found-nothing',
 message: "we're sorry, but nothing was found for your request.",
@@ -64,9 +72,11 @@ transitionInMobile:	'fadeOutRight',
 maxWidth: '390px',
 timeout: 5000,
 closeOnEscape:	'true',
-}); 
+});  
+}
 
-  iziToast.success({
+export function success() {
+   iziToast.success({
     id: 'enter-success', 
     class: 'enter-success', 
     message: 'Great! You have successfully subscribed.',
@@ -85,6 +95,6 @@ closeOnEscape:	'true',
     transitionInMobile:	'fadeOutRight',  
     closeOnEscape:	'true',
 });
-
+}
 
 
