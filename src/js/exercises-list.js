@@ -173,7 +173,7 @@ async function renderExerciseCards(exerciseData) {
 // Шаблон для картки вправ
 function renderExerciseCardMarkup(exercise) {
   return `
-    <li class="bp-item" data-id="${exercise.id}">
+    <li class="bp-item" data-id="${exercise._id}">
     <div class="bp-exercisecard-wraper">
       <div class="bp-rating-info">
         <span class="bp-workout-span">WORKOUT</span>
