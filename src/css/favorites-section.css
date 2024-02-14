@@ -1,3 +1,6 @@
+.section-favorites {
+  padding-bottom: 20px;
+}
 .container-favorites {
   background-color: var(--c-bg-light);
   padding: 40px 20px;
@@ -32,9 +35,15 @@
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 20px;
-  overflow: auto;
+  /* overflow: auto; */
   max-height: 535px;
   border-radius: 15px;
+}
+#simple-id {
+  max-height: 535px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 .item-favorites {
   position: relative;
@@ -127,6 +136,9 @@ button {
 }
 
 @media screen and (min-width: 768px) {
+  .section-favorites {
+    padding-bottom: 16px;
+  }
   .container-favorites {
     padding: 64px 48px;
     height: 928px;
@@ -153,6 +165,9 @@ button {
     row-gap: 20px;
     max-height: 720px;
   }
+  #simple-id {
+    max-height: 720px;
+  }
   .item-favorites {
     width: 313px;
   }
@@ -174,6 +189,9 @@ button {
   .list-favorites {
     gap: 20px;
     row-gap: 28px;
+    max-height: 479px;
+  }
+  #simple-id {
     max-height: 479px;
   }
   .item-favorites {

@@ -1,9 +1,16 @@
 import { getApiInfo } from './api.js';
 import { postApiInfo } from './api.js';
 
+import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually.
+import 'simplebar/dist/simplebar.css';
+
+// You will need a ResizeObserver polyfill for browsers that don't support it! (iOS Safari, Edge, ...)
+import ResizeObserver from 'resize-observer-polyfill';
+window.ResizeObserver = ResizeObserver;
+// new SimpleBar(document.getElementById('simple-id'));
 
 const addToFavoritesBtn = document.querySelector('.add-to-favorites-btn');
-const removeFromFavoritesBtn = document.querySelectorAll(
+const removeFromFavoritesBtn = document.querySelector(
   '.remove-from-favorites-btn'
 );
 const galleryContainer = document.querySelector('.list-favorites');
