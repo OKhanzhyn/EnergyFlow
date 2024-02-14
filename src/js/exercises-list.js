@@ -3,7 +3,7 @@ import { createPaginationFilters } from './pagination.js';
 
 // Вибір з DOM
 const switchItems = document.querySelectorAll('.switch-item');
-const cardContainer = document.querySelector('.bp-list');
+const cardContainer = document.querySelector(".bp-list");
 const paginationContainer = document.querySelector('.exercises-page');
 
 // Для пагінації
@@ -134,14 +134,14 @@ async function renderExerciseCards(exerciseData) {
         return;
     }
 
-    console.log('Rendering exercise cards with data:', exerciseData);
+        console.log("Rendering exercise cards with data:", exerciseData);
 
     let markup = '';
     exerciseData.forEach(exercise => {
         markup += renderExerciseCardMarkup(exercise);
     });
 
-    cardContainer.innerHTML = markup;
+        cardContainer.innerHTML = markup;
 
     const exerciseCards = document.querySelectorAll('.exercise-card');
     exerciseCards.forEach(card => {
