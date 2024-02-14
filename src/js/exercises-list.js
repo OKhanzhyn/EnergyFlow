@@ -165,7 +165,7 @@ function renderExerciseCardMarkup(exercise) {
         }
     }
     let markup = `
-    <li class="bp-item">
+    <li class="bp-item" data-id="${exercise._id}">
     <div class="bp-exercisecard-wraper">
         <div class="bp-rating-info">
         <span class="bp-workout-span">WORKOUT</span>
