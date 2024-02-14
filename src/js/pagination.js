@@ -1,21 +1,47 @@
-export const itemsPerPage = 8;
-export let currentPage = 1;
+import Pagination from 'tui-pagination';
 
-export const mobileBreakpoint = 768;
-export const tabletBreakpoint = 1440;
+function createPaginationFilters(
+  container,
+  totalPages,
+  currentPage,
+  pageSize,
+  onPageChange
+) {
+  const paginationInstance = new Pagination(container, {
+    totalItems: pageSize * totalPages,
+    itemsPerPage: pageSize,
+    visiblePages: 3,
+    page: currentPage,
+    template: {
+      page: '<button class="tui-page page">{{page}}</button>',
+      currentPage:
+        '<strong class="tui-page page button-is-active">{{page}}</strong>',
+    },
+  });
 
-export function renderPagination(container, currentPage, totalPages) {
-  if (!container) {
-    console.error('Pagination container not found');
-    return;
-  }
+  paginationInstance.on('beforeMove', event => {
+    onPageChange(event.page);
+  });
 
-  let paginationHTML = '';
-  for (let i = 1; i <= totalPages; i++) {
-    paginationHTML += (
-      `<button class="page ${i === currentPage ? 'is-active' : ''}">${i}</button>`
-    );
-  }
-
-  return paginationHTML;
+  return paginationInstance;
 }
+
+function createPaginationSubFilters(totalPages) {
+  if (window.innerWidth < 768) {
+    pageSize = 8;
+  } else {
+    pageSize = 9;
+  }
+
+  const paginationContainer = document.querySelector('.tui-pagination');
+  const instance = new Pagination(paginationContainer, {
+    totalItems: pageSize * totalPages,
+    itemsPerPage: pageSize,
+    visiblePages: 3,
+    centerAlign: true,
+  });
+
+  return instance;
+}
+
+export { createPaginationFilters, createPaginationSubFilters };
