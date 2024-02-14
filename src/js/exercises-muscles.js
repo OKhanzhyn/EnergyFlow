@@ -1,19 +1,18 @@
 import axios from 'axios';
-
-// import { currentPage, renderPagination } from './pagination.js';
+import { createPaginationFilters } from './pagination.js'; // Импортируем функцию создания пагинации
 
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
-const switcList = document.querySelector('.switch-list');
+const switchList = document.querySelector('.switch-list');
 const exercisesList = document.querySelector('.exercises-list');
-const pagContainer = document.querySelector('.exercises-page');
+const pagContainer = document.querySelector('#tui-pagination-container');
 
 let pageSize = 8;
 let currentPage = 1;
 let defaultPage = 'Muscles';
+let paginationInstance;
 
-switcList.addEventListener('click', filterBtn);
-pagContainer.addEventListener('click', onPagination);
+switchList.addEventListener('click', filterBtn);
 
 function debounce(func, wait) {
   let timeout;
@@ -54,25 +53,35 @@ async function getApiInfo({ filter, page = 1, limit = 12, type }) {
 
 async function getExercises() {
   try {
-    const exercises = await getApiInfo({
+    const data = await getApiInfo({
       type: 'filters',
       filter: defaultPage,
       limit: pageSize,
       page: currentPage,
-    }).then(data => {
-      const { page, totalPages, results } = data;
-
-      exercisesList.innerHTML = createMarkup(results);
-      pagContainer.innerHTML = '';
-
-      if (totalPages > 1) {
-        const pagination = addPagPages(page, totalPages);
-        pagContainer.innerHTML = pagination;
-      }
     });
+
+    const { page, totalPages, results } = data;
+
+    exercisesList.innerHTML = createMarkup(results);
+    pagContainer.innerHTML = '';
+
+    if (totalPages > 1) {
+      paginationInstance = createPaginationFilters(
+        pagContainer,
+        totalPages,
+        currentPage,
+        pageSize,
+        onPageChange
+      );
+    }
   } catch {
     console.error;
   }
+}
+
+function onPageChange(page) {
+  currentPage = page;
+  getExercises();
 }
 
 getExercises();
@@ -89,7 +98,6 @@ async function filterBtn(event) {
   const filterValue = event.target;
   const query = filterValue.dataset.filter;
   defaultPage = query;
-  pagContainer.innerHTML = '';
 
   Array.from(event.currentTarget.children).map(item => {
     if (item.textContent !== event.target.textContent) {
@@ -100,23 +108,7 @@ async function filterBtn(event) {
   });
 
   try {
-    getApiInfo({
-      type: 'filters',
-      filter: query,
-      limit: pageSize,
-      page: currentPage,
-    }).then(data => {
-      const { page, totalPages, results } = data;
-
-      exercisesList.innerHTML = createMarkup(results);
-
-      if (totalPages > 1) {
-        const pagination = addPagPages(page, totalPages);
-        pagContainer.innerHTML = pagination;
-      } else {
-        pagContainer.innerHTML = '';
-      }
-    });
+    await getExercises();
   } catch {
     console.error('oops');
   }
@@ -138,43 +130,6 @@ function createMarkup(results) {
     )
     .join('');
   return markUp;
-}
-
-async function onPagination(event) {
-  event.preventDefault();
-
-  console.log(currentPage);
-  currentPage = event.target.textContent;
-  Array.from(event.currentTarget.children).map(item => {
-    if (item.textContent !== currentPage) {
-      item.classList.remove('button-is-active');
-    } else {
-      event.target.classList.add('button-is-active');
-    }
-  });
-
-  exercisesList.innerHTML = '';
-
-  try {
-    const { page, totalPages, results } = await getExercises({
-      page: currentPage,
-    });
-    if (page === totalPages) {
-      return;
-    }
-    exercisesList.innerHTML = createMarkup(results);
-  } catch {
-    console.error('Oops, something wrong');
-  }
-}
-
-function addPagPages(page, totalPages) {
-  let paginationHtml = '';
-
-  for (let i = 1; i <= totalPages; i += 1) {
-    paginationHtml += `<li><button class="page button-is-active" type="button">${i}</button></li>`;
-  }
-  return paginationHtml;
 }
 
 window.addEventListener('load', () => {
