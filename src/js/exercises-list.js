@@ -40,7 +40,7 @@ function updateItemsPerPage() {
 // Отримання даних з API (асинхронний запит)
 async function fetchDataFromApi(exercise) {
   try {
-    const response = await getApiInfo({ filter: exercise, type: 'exercises' });
+    const response = await getApiInfo({ ...exercise , type: 'exercises' });
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch data from API: ' + error.message);
@@ -62,8 +62,17 @@ async function renderPage() {
       console.error('Query is undefined');
       return;
     }
+
+    
     // Для даних з API
-    const exerciseData = await fetchDataFromApi(query);
+    const searchParams = new URLSearchParams(window.location.search); // Беремо дані з url qewry params
+    let bodypart = searchParams.get("bodypart");
+    let muscles = searchParams.get("muscles");
+    let equipment = searchParams.get("equipment");
+
+    if (searchParams.size) {
+        const exerciseData = await fetchDataFromApi({ bodypart, muscles, equipment });
+
 
     // Загальна кількість сторінок
     const totalPages = Math.ceil(exerciseData.results.length / itemsPerPage);
@@ -80,6 +89,10 @@ async function renderPage() {
     if (exerciseData.results.length > itemsPerPage) {
       renderPagination(totalPages);
     }
+    }
+    const urlParams = new URLSearchParams(window.location.search); // очищають url
+    window.history.replaceState(null, null, window.location.pathname ); // очищають url
+
   } catch (error) {
     console.error('Error fetching and rendering data:', error);
   }
@@ -109,23 +122,7 @@ function renderPagination(totalPages) {
   });
 }
 
-// // Додавання обробника подій до кожного елемента карток вправ
-// const exercisesListItems = document.querySelectorAll('.exercises-item');
-// exercisesListItems.forEach(item => {
-//     item.addEventListener('click', (event) => {
-//         event.preventDefault();
-//         // Знаходимо батьківський елемент картки з класом bp-item
-//         const bpItem = item.closest('.bp-item');
-//         if (bpItem) {
-//             // Видаляємо клас 'visually-hidden' з bp-item, щоб показати його
-//             bpItem.classList.remove('visually-hidden');
-//             // Додаємо клас 'visually-hidden' до елемента exercises-item, щоб сховати його
-//             item.classList.add('visually-hidden');
-//             renderPage();
-//         }
-//     });
-// });
-
+// створення карток
 const exercisesList = document.querySelector('.exercises-list');
 exercisesList.addEventListener('click', function (event) {
   const targetItem = event.target.closest('.exercises-item');
@@ -134,12 +131,22 @@ exercisesList.addEventListener('click', function (event) {
     const bpList = document.querySelector('.bp-list');
     if (bpList) {
       bpList.classList.remove('visually-hidden');
-      bpList.style.display = 'block';
+    //   bpList.style.display = 'block'; // TODO
     }
     // Після відображення bp-list приховуємо exercises
     exercisesList.classList.add('visually-hidden');
+    
+    const urlParams = new URLSearchParams(window.location.search); // беремо значення урла яке є зараз
+
+    const exerciseKey = targetItem.getAttribute("data-filter"); // беремо значення атрибута
+    const exerciseValue = targetItem.getAttribute("data-name");
+
+    urlParams.set( exerciseKey.toLowerCase(), exerciseValue.toLowerCase() );
+    const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+    window.history.replaceState(null, null, newUrl); // задаю квері параметри в урлу
+
     renderPage();
-  }
+    }
 });
 
 // Рендеринг карток вправ
@@ -172,12 +179,21 @@ async function renderExerciseCards(exerciseData) {
 
 // Шаблон для картки вправ
 function renderExerciseCardMarkup(exercise) {
-  return `
-    <li class="bp-item" data-id="${exercise._id}">
+    function capitalizeFirstLetter(word) {
+        // Перевірка чи починається слово з букви
+        if (/^[a-zA-Z]/.test(word)) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        } else {
+            return word; // якщо перший символ є цифрою або іншим символом, нічого не робимо
+        }
+    }
+
+    let markup = `
+    <li class="bp-item">
     <div class="bp-exercisecard-wraper">
       <div class="bp-rating-info">
         <span class="bp-workout-span">WORKOUT</span>
-        <span class="bp-rating">${exercise.rating}</span>
+        <span class="bp-rating">${capitalizeFirstLetter(exercise.rating)}</span>
         <svg
           class="icon-star"
           viewBox="0 0 32 32"
@@ -210,27 +226,28 @@ function renderExerciseCardMarkup(exercise) {
       >
         <use href="./img/sprite.svg#icon-running-man" />
       </svg>
-      <span>${exercise.name}</span>
+      <span>${capitalizeFirstLetter(exercise.name)}</span>
     </div>
 
     <div class="bp-block-info">
       <div class="bp-calories">
         <span class="bp-block-info-title">Burned calories: </span>
-        <span class="bp-block-info-value calories-value">${exercise.burnedCalories}</span>
+        <span class="bp-block-info-value calories-value">${capitalizeFirstLetter(exercise.burnedCalories)}</span>
         <span class="bp-block-info-value">/ ${exercise.time} min</span>
       </div>
       <div class="bp-body-part">
         <span class="bp-block-info-title">Body part: </span>
-        <span class="bp-block-info-value body-part-value">${exercise.bodyPart}</span>
+        <span class="bp-block-info-value body-part-value">${capitalizeFirstLetter(exercise.bodyPart)}</span>
       </div>
       <div class="bp-target">
         <span class="bp-block-info-title">Target: </span>
-        <span class="bp-block-info-value bp-target-value">${exercise.target}</span>
+        <span class="bp-block-info-value bp-target-value">${capitalizeFirstLetter(exercise.target)}</span>
       </div>
     </div>
   </li>`;
-}
 
+    return markup;
+}
 // Обробник на елемент переключення
 function handleSwitchItemClick() {
   switchItems.forEach(item => item.classList.remove('is-active'));
