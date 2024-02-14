@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', async function () {
   const bpList = document.querySelector('.bp-list');
   const bpFormWrapper = document.querySelector('.bp-form-wraper');
   const bpSearchInput = document.querySelector('.bp-search-input');
+  const exercisesPerPage = 8;
+  let currentPage = 1; 
 
   for (let i = 0; i < switchItems.length; i++) {
     switchItems[i].addEventListener('click', async function() {
@@ -17,30 +19,21 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
   }
 
-  function renderSubtypes(subtypes) {
-    exercisesList.innerHTML = '';
-    bpList.innerHTML = '';
-    bpFormWrapper.classList.add('visually-hidden');
-    for (let i = 0; i < subtypes.length; i++) {
-      const li = document.createElement('li');
-      li.textContent = subtypes[i];
-      li.addEventListener('click', async function() {
-        const exercises = await fetchData(`exercises?subtype=${subtypes[i]}`);
-        renderExercises(exercises);
-
-        bpFormWrapper.classList.remove('visually-hidden');
-      });
-      bpList.appendChild(li);
-    }
-  }
-
   async function fetchData(url) {
     try {
       const response = await fetch(url);
-      const data = await response.json();
-      return data;
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        return await response.json();
+      } else {
+        throw new Error('Response is not valid JSON');
+      }
     } catch (error) {
       console.error('Error fetching data:', error);
+      return [];
     }
   }
 
@@ -56,10 +49,44 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
   }
 
-  bpSearchInput.addEventListener('input', async function() {
+  function renderErrorMessage(message) {
+    exercisesList.innerHTML = `<li>${message}</li>`;
+  }
+
+  // function updatePagination(totalPages) {
+  // }
+
+  async function performSearch(filter, subtype, searchTerm) {
+  const start = (currentPage - 1) * exercisesPerPage;
+  const url = `/api/exercises?filter=${filter}&subtype=${subtype}&search=${searchTerm}&start=${start}&limit=${exercisesPerPage}`;
+  try {
+    const response = await fetchData(url);
+    const exercises = response.exercises;
+    const total = response.total;
+    if (exercises && exercises.length === 0) {
+      renderErrorMessage('No exercises found.');
+    } else {
+      renderExercises(exercises);
+      updatePagination(Math.ceil(total / exercisesPerPage));
+    }
+  } catch (error) {
+    console.error('Error fetching exercises:', error);
+    renderErrorMessage('Error fetching exercises.');
+  }
+}
+
+
+  bpSearchInput.addEventListener('input', function() {
     const searchTerm = bpSearchInput.value.trim().toLowerCase();
-    const exercises = await fetchData(`/api/exercises?search=${searchTerm}`);
-    renderExercises(exercises);
+    performSearch('Muscles', 'All', searchTerm);
+  });
+
+  document.getElementById('bp-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const filter = document.querySelector('.switch-item.is-active').dataset.filter;
+    const subtype = 'All';
+    const searchTerm = bpSearchInput.value.trim().toLowerCase();
+    performSearch(filter, subtype, searchTerm);
   });
 
   exercisesList.addEventListener('click', function(event) {
