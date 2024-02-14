@@ -31,15 +31,10 @@ function debounce(func, wait) {
 
 // Визначення кількості карток на сторінці (в залежності від розміру екрану)
 function updateItemsPerPage() {
-    if (window.innerWidth < mobileBreakpoint) {
-    itemsPerPage = 8; // для моб
-    } else if (window.innerWidth < tabletBreakpoint) {
-    itemsPerPage = 8; // для таби
+    if (window.innerWidth < 1440) {
+        itemsPerPage = 8;
     } else {
-    itemsPerPage = 9; // для десктопів
-    }
-    if (currentPage > Math.ceil(totalPages / itemsPerPage)) {
-    currentPage = 1; 
+        itemsPerPage = 9;
     }
 }
 
