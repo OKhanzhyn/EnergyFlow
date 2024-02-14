@@ -9,6 +9,7 @@
 
 .exercise-title-wrapper {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .exercises-container {
@@ -19,16 +20,15 @@
 }
 
 .switch-item {
-  white-space: nowrap;
-  background-color: var(--c-light);
-  border-radius: 30px;
-  padding: 7px 14px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 129%;
-  color: var(--c-black);
-  border: none;
-  box-shadow: none;
+    background-color: var(--c-light);
+    border-radius: 30px;
+    padding: 7px 14px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    color: var(--c-black);
+    border: none;
+    box-shadow: none;
 }
 
 .is-active {
@@ -37,14 +37,14 @@
 }
 
 .switch-list {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 6px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .exercises-list {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .exercises-item {
@@ -124,14 +124,19 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .title-exercises {
+    .switch-list {
+    margin-bottom: 32px;
+    gap: 8px;
+    }
+    
+    .title-exercises {
     font-size: 44px;
     line-height: 109%;
   }
   .exercises-container {
     border-radius: 50px;
     max-width: 736px;
-    padding: 60px;
+    padding: 48px;
   }
 
   .switch-item {

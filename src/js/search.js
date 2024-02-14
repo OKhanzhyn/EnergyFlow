@@ -75,6 +75,14 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 }
 
+bpSearchInput.addEventListener('input', function() {
+  const filter = document.querySelector('.switch-item.is-active').dataset.filter;
+  const subtype = 'All';
+  const searchTerm = bpSearchInput.value.trim().toLowerCase();
+  performSearch(filter, subtype, searchTerm);
+});
+
+
 
   bpSearchInput.addEventListener('input', function() {
     const searchTerm = bpSearchInput.value.trim().toLowerCase();
