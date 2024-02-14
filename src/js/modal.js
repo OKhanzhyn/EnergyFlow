@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { getApiInfo } from './api.js'
-
+import { getApiInfo } from './api.js';
+import {capitalizeFirstLetter} from '../js/exercises-list.js';
 
 const modalExBtn = document.querySelector('.bp-list');
 const modalWindow = document.querySelector('.backdrop');
@@ -22,9 +22,7 @@ if (event.target.nodeName !== 'BUTTON') {
 
     const starsDiv = document.querySelector(".stars-wraper");
     const stars = starsDiv.children;
-    console.log(stars);
     const rating = Math.round(card.data.rating);
-    console.log(rating);
     starsRating(stars, rating);
 
 
@@ -74,9 +72,9 @@ function createModalMarkup ({gifUrl, name, rating, target, bodyPart, equipment, 
         />
       </div>
       <div class="modal-info-wraper">
-        <h2 class="me-title">${name}</h2>
+        <h2 class="me-title">${capitalizeFirstLetter(name)}</h2>
         <div class="rating-wraper">
-          <span class="rating">${rating}</span>
+          <span class="rating">${Math.round(rating).toFixed(1)}</span>
           <div class="stars-wraper">
             <svg class="icon-star dimmed-star" viewBox="0 0 32 32" width="13" height="13">
               <use href="./img/sprite.svg#icon-star"></use>
@@ -103,15 +101,15 @@ function createModalMarkup ({gifUrl, name, rating, target, bodyPart, equipment, 
         <div class="me-block-info">
           <div class="me-block-info-target">
             <h3 class="block-info-name">Target</h3>
-            <span class="block-info-value">${target}</span>
+            <span class="block-info-value">${capitalizeFirstLetter(target)}</span>
           </div>
           <div class="me-block-info-target">
             <h3 class="block-info-name">Body Part</h3>
-            <span class="block-info-value">${bodyPart}</span>
+            <span class="block-info-value">${capitalizeFirstLetter(bodyPart)}</span>
           </div>
           <div class="me-block-info-target">
             <h3 class="block-info-name">Equipment</h3>
-            <span class="block-info-value">${equipment}</span>
+            <span class="block-info-value">${capitalizeFirstLetter(equipment)}</span>
           </div>
           <div class="me-block-info-target">
             <h3 class="block-info-name">Popular</h3>
@@ -127,7 +125,7 @@ function createModalMarkup ({gifUrl, name, rating, target, bodyPart, equipment, 
           </div>
         </div>
         <p class="exersice-text">
-          ${description}
+          ${capitalizeFirstLetter(description)}
         </p>
         <button class="add-to-favorites-btn" type="button">
           Add to favorites
@@ -143,9 +141,9 @@ function createModalMarkup ({gifUrl, name, rating, target, bodyPart, equipment, 
   modalWindow.innerHTML = markup;
 };
 
-function starsRating(array, rating) {
-  console.log(array);
-  array.forEach((star, i) => {
+function starsRating(array, rating) {  
+  const arr = Array.from(array);
+    arr.forEach((star, i) => {
     i < rating ? star.classList.remove('dimmed-star') : null;
   });
 }
