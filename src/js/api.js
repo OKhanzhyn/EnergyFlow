@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-function getApiInfo({ filter, page = 1, limit = 12, type }) {
+function getApiInfo({ filter, page = 1, limit = 12, type, ...params }) {
   return axios.get(`https://energyflow.b.goit.study/api/${type}`, {
     params: {
+      ...params,
       filter,
       page,
       limit,
