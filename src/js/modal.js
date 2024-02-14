@@ -2,23 +2,32 @@ import axios from 'axios';
 import { getApiInfo } from './api.js'
 
 
-const modalExBtn = document.querySelectorAll('.bp-start-button');
+const modalExBtn = document.querySelector('.bp-list');
 const modalWindow = document.querySelector('.backdrop');
 
-modalExBtn.forEach(btn => {btn.addEventListener("click", handleModal)});
-
+modalExBtn.addEventListener('click', handleModal);
 
 async function handleModal(event) {
+if (event.target.nodeName !== 'BUTTON') {
+    return;
+  }
+
   modalWindow.classList.remove("is-hidden");
   const liEl = event.target.closest('li');
   
   const cardId = liEl.dataset.id;
-  console.log(cardId);
   try {
-    const card = await axios.get('https://energyflow.b.goit.study/api/exercises/${cardId}');
-console.log(card.data);
+    const card = await axios.get(`https://energyflow.b.goit.study/api/exercises/${cardId}`);
     createModalMarkup(card.data);
-    
+
+    const starsDiv = document.querySelector(".stars-wraper");
+    const stars = starsDiv.children;
+    console.log(stars);
+    const rating = Math.round(card.data.rating);
+    console.log(rating);
+    starsRating(stars, rating);
+
+
   } catch (err) {
     console.log(err);    
   }  
@@ -69,16 +78,16 @@ function createModalMarkup ({gifUrl, name, rating, target, bodyPart, equipment, 
         <div class="rating-wraper">
           <span class="rating">${rating}</span>
           <div class="stars-wraper">
-            <svg class="icon-star" viewBox="0 0 32 32" width="13" height="13">
+            <svg class="icon-star dimmed-star" viewBox="0 0 32 32" width="13" height="13">
               <use href="./img/sprite.svg#icon-star"></use>
             </svg>
-            <svg class="icon-star" viewBox="0 0 32 32" width="13" height="13">
+            <svg class="icon-star dimmed-star" viewBox="0 0 32 32" width="13" height="13">
               <use href="./img/sprite.svg#icon-star"></use>
             </svg>
-            <svg class="icon-star" viewBox="0 0 32 32" width="13" height="13">
+            <svg class="icon-star dimmed-star" viewBox="0 0 32 32" width="13" height="13">
               <use href="./img/sprite.svg#icon-star"></use>
             </svg>
-            <svg class="icon-star" viewBox="0 0 32 32" width="13" height="13">
+            <svg class="icon-star dimmed-star" viewBox="0 0 32 32" width="13" height="13">
               <use href="./img/sprite.svg#icon-star"></use>
             </svg>
             <svg
@@ -133,3 +142,10 @@ function createModalMarkup ({gifUrl, name, rating, target, bodyPart, equipment, 
     `    ;
   modalWindow.innerHTML = markup;
 };
+
+function starsRating(array, rating) {
+  console.log(array);
+  array.forEach((star, i) => {
+    i < rating ? star.classList.remove('dimmed-star') : null;
+  });
+}
