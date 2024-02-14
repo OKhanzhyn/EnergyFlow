@@ -156,7 +156,7 @@ async function renderExerciseCards(exerciseData) {
 
 // Шаблон для картки вправ
 function renderExerciseCardMarkup(exercise) {
-    function capitalizeFirstLetter(word) {
+    export function capitalizeFirstLetter(word) {
         // Перевірка чи починається слово з букви
         if (/^[a-zA-Z]/.test(word)) {
             return word.charAt(0).toUpperCase() + word.slice(1);
