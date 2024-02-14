@@ -8,5 +8,6 @@ import './js/favorites';
 import './js/modal';
 import './js/messages';
 import './js/subscribe';
+import './js/scroll-up';
 
 import './js/api';
