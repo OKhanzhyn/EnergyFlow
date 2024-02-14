@@ -2,10 +2,11 @@ import axios from 'axios';
 import { getApiInfo } from './api.js'
 
 
-const modalExBtn = document.querySelector('.bp-start-button');
+const modalExBtn = document.querySelectorAll('.bp-start-button');
 const modalWindow = document.querySelector('.backdrop');
 
-modalExBtn.addEventListener("click", handleModal);
+modalExBtn.forEach(btn => {btn.addEventListener("click", handleModal)});
+
 
 async function handleModal(event) {
   modalWindow.classList.remove("is-hidden");
