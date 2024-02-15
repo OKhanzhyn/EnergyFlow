@@ -269,4 +269,5 @@ window.addEventListener(
     }, 250)
 );
 
+
 export { capitalizeFirstLetter };
