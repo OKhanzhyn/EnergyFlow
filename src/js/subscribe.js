@@ -1,35 +1,39 @@
-const API_URL = 'https://energyflow.b.goit.study/api/subscription';
+import iziToast from 'izitoast';
+import { warningEmail, errorNotification, success } from './messages';
+import { postApiInfo } from './api';
 
 const form = document.querySelector('#subscribe-form');
+const inputFooter = document.querySelector('#footer-input');
 
+const regex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+form.addEventListener('submit', async e => {
+  e.preventDefault();
 
-    const email = form.elements.email.value;
+  const email = form.elements.email.value.trim().toLowerCase();
 
-    console.log(email);
-    try {
-        const result = await subscribe(email);
+  if (!email.match(regex)) {
+    inputFooter.style.borderColor = 'red';
+    warningEmail();
+    return;
+  }
 
-        form.reset();
-    } catch {
-        console.log('error')
-    }
-
-    console.log(result);
-
+  const result = await subscribe(email);
+  if (result) {
+    success();
+  }
+  form.reset();
 });
 
 async function subscribe(email) {
-    const result = await fetch(API_URL, {
-        body: JSON.stringify({ email }),
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            "Content-Type": "application/json"
-        },
-    });
-
-    return result.json();
+  try {
+    const result = await postApiInfo({ email }, 'subscription');
+    return result;
+  } catch (error) {
+    if (error.response.status === 409) {
+      warningEmail();
+      return;
+    }
+    errorNotification();
+  }
 }

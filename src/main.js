@@ -1,3 +1,4 @@
+import "izitoast/dist/css/iziToast.min.css";
 import './js/burger-menu';
 import './js/quote';
 import './js/exercises-muscles';
@@ -11,3 +12,4 @@ import './js/subscribe';
 import './js/scroll-up';
 
 import './js/api';
+
