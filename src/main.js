@@ -4,9 +4,10 @@ import './js/exercises-muscles';
 import './js/exercises-list';
 import './js/search';
 import './js/pagination';
-import './js/favorites';
 import './js/modal';
+import './js/favorites';
 import './js/messages';
 import './js/subscribe';
+import './js/scroll-up';
 
 import './js/api';
