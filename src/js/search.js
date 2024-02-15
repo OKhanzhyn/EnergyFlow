@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', async function () {
   for (let i = 0; i < switchItems.length; i++) {
     switchItems[i].addEventListener('click', async function() {
       const filter = switchItems[i].dataset.filter;
-      
       const subtypes = await fetchData(`subtypes?filter=${filter}`);
       renderSubtypes(subtypes);
     });
@@ -37,6 +36,29 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
   }
 
+  function renderSubtypes(subtypes) {
+    exercisesList.innerHTML = '';
+    bpList.innerHTML = '';
+    bpFormWrapper.classList.add('visually-hidden');
+    
+    if (!Array.isArray(subtypes)) {
+      console.error('Subtypes is not an array');
+      return;
+    }
+
+    for (let i = 0; i < subtypes.length; i++) {
+      const li = document.createElement('li');
+      li.textContent = subtypes[i];
+      li.addEventListener('click', async function() {
+        const exercises = await fetchData(`exercises?subtype=${subtypes[i]}`);
+        renderExercises(exercises);
+
+        bpFormWrapper.classList.remove('visually-hidden');
+      });
+      bpList.appendChild(li);
+    }
+  }
+
   function renderExercises(exercises) {
     exercisesList.innerHTML = '';
     for (let i = 0; i < exercises.length; i++) {
@@ -53,36 +75,24 @@ document.addEventListener('DOMContentLoaded', async function () {
     exercisesList.innerHTML = `<li>${message}</li>`;
   }
 
-  // function updatePagination(totalPages) {
-  // }
-
   async function performSearch(filter, subtype, searchTerm) {
-  const start = (currentPage - 1) * exercisesPerPage;
-  const url = `/api/exercises?filter=${filter}&subtype=${subtype}&search=${searchTerm}&start=${start}&limit=${exercisesPerPage}`;
-  try {
-    const response = await fetchData(url);
-    const exercises = response.exercises;
-    const total = response.total;
-    if (exercises && exercises.length === 0) {
-      renderErrorMessage('No exercises found.');
-    } else {
-      renderExercises(exercises);
-      updatePagination(Math.ceil(total / exercisesPerPage));
+    const start = (currentPage - 1) * exercisesPerPage;
+    const url = `/api/exercises?filter=${filter}&subtype=${subtype}&search=${searchTerm}&start=${start}&limit=${exercisesPerPage}`;
+    try {
+      const response = await fetchData(url);
+      const exercises = response.exercises;
+      const total = response.total;
+      if (exercises && exercises.length === 0) {
+        renderErrorMessage('No exercises found.');
+      } else {
+        renderExercises(exercises);
+        updatePagination(Math.ceil(total / exercisesPerPage));
+      }
+    } catch (error) {
+      console.error('Error fetching exercises:', error);
+      renderErrorMessage('Error fetching exercises.');
     }
-  } catch (error) {
-    console.error('Error fetching exercises:', error);
-    renderErrorMessage('Error fetching exercises.');
   }
-}
-
-bpSearchInput.addEventListener('input', function() {
-  const filter = document.querySelector('.switch-item.is-active').dataset.filter;
-  const subtype = 'All';
-  const searchTerm = bpSearchInput.value.trim().toLowerCase();
-  performSearch(filter, subtype, searchTerm);
-});
-
-
 
   bpSearchInput.addEventListener('input', function() {
     const searchTerm = bpSearchInput.value.trim().toLowerCase();
