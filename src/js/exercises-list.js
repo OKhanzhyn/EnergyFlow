@@ -156,14 +156,7 @@ async function renderExerciseCards(exerciseData) {
 
 // Шаблон для картки вправ
 function renderExerciseCardMarkup(exercise) {
-    function capitalizeFirstLetter(word) {
-        // Перевірка чи починається слово з букви
-        if (/^[a-zA-Z]/.test(word)) {
-            return word.charAt(0).toUpperCase() + word.slice(1);
-        } else {
-            return word; // якщо перший символ є цифрою або іншим символом, нічого не робимо
-        }
-    }
+
     let markup = `
     <li class="bp-item" data-id="${exercise._id}">
     <div class="bp-exercisecard-wraper">
@@ -224,7 +217,14 @@ function renderExerciseCardMarkup(exercise) {
 
     return markup;
 }
-
+function capitalizeFirstLetter(word) {
+    // Перевірка чи починається слово з букви
+    if (/^[a-zA-Z]/.test(word)) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    } else {
+        return word; // якщо перший символ є цифрою або іншим символом, нічого не робимо
+    }
+}
 // Обробник на елемент переключення
 function handleSwitchItemClick() {
     switchItems.forEach(item => item.classList.remove('is-active'));
@@ -269,4 +269,5 @@ window.addEventListener(
     }, 250)
 );
 
-export { capitalizeFirstLetter }
+
+export { capitalizeFirstLetter };
