@@ -1,13 +1,13 @@
 /* Базові стилі */
 
-.section {
-  margin-top: 20px;
-}
 
 .quote-day {
   border-radius: 30px;
   background: var(--c-primary);
   position: relative;
+  padding: 40px 20px;
+  display: flex;
+  gap: 12px;
 }
 
 .quote-title {
@@ -16,31 +16,24 @@
   font-weight: 500;
   line-height: 1.4;
   text-align: left;
-  padding-top: 42px;
-  padding-left: 66px;
-  padding-right: 109px;
   margin-bottom: 14px;
 }
 
 .description {
-  color:  var(--c-light-tr60);
+  color: var(--c-light-tr60);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.29;
   text-align: left;
-  padding-left: 66px;
-  padding-right: 20px;
   margin-bottom: 14px;
 }
 
 .author-quote {
-  color:  var(--c-light);
+  color: var(--c-light);
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   text-align: left;
-  padding-left: 66px;
-  padding-bottom: 40px;
 }
 
 .running-man {
@@ -49,12 +42,6 @@
   height: 32px;
   border-radius: 100%;
   padding: 6px 7px;
-  top: 40px;
-  left: 20px;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .quote-icon {
@@ -65,8 +52,6 @@
   position: absolute;
   top: 40px;
   right: 20px;
-  width: 28px;
-  height: 28px;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -90,36 +75,25 @@
 /* Планшет */
 
 @media only screen and (min-width: 768px) {
-  .section {
-    margin-top: 16px;
-  }
 
   .quote-day {
     border-radius: 50px;
     width: 736px;
     height: 302px;
+    padding: 64px 80px;
+    gap: 16px;
   }
 
   .quote-title {
-    padding-top: 64px;
-    padding-left: 130px;
-    padding-right: 414px;
     font-size: 24px;
     line-height: 1.33;
     margin-bottom: 16px;
   }
 
   .description {
-    padding-left: 130px;
-    padding-right: 80px;
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 25px;
-  }
-
-  .author-quote {
-    padding-left: 130px;
-    padding-bottom: 69px;
   }
 
   .running-man {
@@ -131,6 +105,12 @@
     top: 41.6px;
     right: 86.17px;
   }
+
+  .icon-commas {
+    width: 48px;
+    height: 48px;
+  }
+
 
   .background-image {
     background: url('../img/quote-image_tab.webp');
@@ -146,32 +126,20 @@
 /* Десктоп */
 
 @media only screen and (min-width: 1440px) {
-  .section {
-    margin-top: 16px;
-  }
-
+  
   .quote-day {
     width: 704px;
     height: 302px;
+    padding: 64px;
   }
 
-  .quote-title {
-    padding-left: 114px;
-    padding-right: 398px;
-  }
-
+  
   .description {
     font-size: 16px;
     line-height: 1.5;
-    padding-left: 114px;
-    padding-right: 64px;
   }
 
-  .author-quote {
-    padding-left: 114px;
-    padding-bottom: 69px;
-  }
-
+ 
   .running-man {
     left: 64px;
   }
@@ -196,24 +164,22 @@
   }
 }
 
-
 /* retina */
 
- @media screen and (min-width: 320px) and (min-resolution: 192dpi) {
-    .background-image {
-      background-image: url('../img/quote-image_mob@2x.webp');
-    }
+@media screen and (min-width: 320px) and (min-resolution: 192dpi) {
+  .background-image {
+    background-image: url('../img/quote-image_mob@2x.webp');
   }
+}
 
-  @media screen and (min-width: 768px) and (min-resolution: 192dpi) {
-    .background-image {
-      background-image: url('../img/quote-image_tab@2x.webp');
-    }
+@media screen and (min-width: 768px) and (min-resolution: 192dpi) {
+  .background-image {
+    background-image: url('../img/quote-image_tab@2x.webp');
   }
+}
 
-     @media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
-    .background-image {
-      background-image: url('../img/quote-image_desk@2x.webp');
-    }
+@media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+  .background-image {
+    background-image: url('../img/quote-image_desk@2x.webp');
   }
-
+}

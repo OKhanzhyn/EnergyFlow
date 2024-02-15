@@ -1,175 +1,171 @@
-
 .title-exercises {
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 100%;
-    letter-spacing: -0.02em;
-    color: var(--c-black);
-    margin-bottom: 25px;
-
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: var(--c-black);
+  margin-bottom: 25px;
 }
 
 .exercises-container {
-    border-radius: 30px;
-    height: 2252px;
-    max-width: 335px;
-    background-color: var(--c-bg-light);
-    padding: 40px 20px;
-    margin-top: 20px;
-    
+  border-radius: 30px;
+  max-width: 335px;
+  background-color: var(--c-bg-light);
+  padding: 40px 20px;
 }
 
 .switch-item {
-    white-space: nowrap;
-    background-color: var(--c-light);
-    border-radius: 30px;
-    padding: 7px 14px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 129%;
-    color: var(--c-black);
-    border: none;
-    box-shadow: none;
+  white-space: nowrap;
+  background-color: var(--c-light);
+  border-radius: 30px;
+  padding: 7px 14px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--c-black);
+  border: none;
+  box-shadow: none;
 }
 .is-active {
-    background-color: var(--c-primary);
-    color: var(--c-light);
+  background-color: var(--c-primary);
+  color: var(--c-light);
 }
 
 .switch-list {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .exercises-list {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .exercises-item {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .exercises-image {
-    border: 1px solid var(--c-light-tr30);
-    border-radius: 12px;
-    height: 232px;
-    width: 295px;
-    filter: brightness(.4);
-    background-size: cover;
-    background-position: center;
-    position: relative;
+  border: 1px solid var(--c-light-tr30);
+  border-radius: 12px;
+  height: 232px;
+  width: 295px;
+  filter: brightness(0.4);
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 .exercises-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
-.page {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 160%;
-    letter-spacing: 0.04em;
-    color: var(--c-black-tr40);
-    border: none;
-    background-color: var(--c-bg-light); ;
+.tui-pagination .tui-first,
+.tui-pagination .tui-prev,
+.tui-pagination .tui-last,
+.tui-pagination .tui-next {
+  display: none;
 }
 
-.page:active,
-.page:hover {
+.tui-pagination .tui-page {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 160%;
+  letter-spacing: 0.04em;
+  color: var(--c-black-tr40);
+  border: none;
+  /* background-color: var(--c-bg-light); */
+
+  &.button-is-active {
     border: 1.5px solid var(--c-black);
     border-radius: 18px;
-    width: 31px;
+    width: 32px;
     height: 32px;
     color: var(--c-black);
+    padding: 0px 10px;
+  }
 }
 
 .exercises-title {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 100%;
-    text-align: center;
-    color: var(--c-light);
-    text-transform: capitalize;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  text-align: center;
+  color: var(--c-light);
+  text-transform: capitalize;
 }
 
 .exercises-text {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 150%;
-    color: var(--c-light-tr40);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: var(--c-light-tr40);
 }
 .image-container {
-    position: relative;
+  position: relative;
 }
 
 .text-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 @media only screen and (min-width: 768px) {
-    .title-exercises {
-        font-size: 44px;
-        line-height: 109%;
-    }
-    .exercises-container {
-        border-radius: 50px;
-        height: 1918px;
-        max-width: 736px;
-        padding: 60px;
-    }
-   
-    .switch-item {
-        padding: 10px 20px;
-        font-size: 16px;
-        line-height: 150%;
-    }
-  
-    .exercises-image {
-        height: 250px;
-        width: 313px;
-    }
-    .exercises-title {
-        font-size: 24px;
-    }
-    .exercises-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-    .exercises-item {
-        width: calc(50% - 10px);
-        margin-bottom: 0px;
-    }
-    
-    .page {
-        font-size: 24px;
-        line-height: 133%;
-    }
-    .page:active,
-    .page:hover {
-        width: 32px;
-    }   
+  .title-exercises {
+    font-size: 44px;
+    line-height: 109%;
+  }
+  .exercises-container {
+    border-radius: 50px;
+    max-width: 736px;
+    padding: 60px;
+  }
 
+  .switch-item {
+    padding: 10px 20px;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .exercises-image {
+    height: 250px;
+    width: 313px;
+  }
+  .exercises-title {
+    font-size: 24px;
+  }
+  .exercises-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .exercises-item {
+    width: calc(50% - 10px);
+    margin-bottom: 0px;
+  }
+
+  .page {
+    font-size: 24px;
+    line-height: 133%;
+  }
+  .button-is-active {
+    width: 32px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-    .exercises-container {
-        height: 1178px;
-        max-width: 1408px;
-    }
-    .exercises-item {
-        margin-bottom: 20px;
-    }
-    .exercises-item {
-        width: calc(25% - 20px);
-        box-sizing: border-box;
-    }
+  .exercises-container {
+    max-width: 1408px;
+  }
 
+  .exercises-item {
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
 }
