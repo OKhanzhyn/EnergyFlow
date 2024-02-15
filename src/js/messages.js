@@ -1,12 +1,6 @@
-// post-запит
-import { postApiInfo } from './api.js';
 
 import iziToast from 'izitoast';
-
-// you have successfully subscribed.
-// pls, enter correct data.
-// this email is already registered, pls choose another one.
-// we're sorry, but nothing was found for your request.
+import 'izitoast/dist/css/iziToast.min.css';
 
 export function warningEmail() {
   iziToast.warning({
@@ -50,7 +44,8 @@ export function errorNotification() {
   });
 }
 
-function info() {
+
+export function info() {
   iziToast.info({
     id: 'found-nothing',
     class: 'found-nothing',
