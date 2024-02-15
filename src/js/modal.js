@@ -5,7 +5,9 @@ import {capitalizeFirstLetter} from '../js/exercises-list.js';
 const modalExBtn = document.querySelector('.bp-list');
 const modalWindow = document.querySelector('.backdrop');
 
+if (modalExBtn) {
 modalExBtn.addEventListener('click', handleModal);
+}
 
 async function handleModal(event) {
 if (event.target.nodeName !== 'BUTTON') {

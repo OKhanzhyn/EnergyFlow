@@ -6,6 +6,7 @@ axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 const switchList = document.querySelector('.switch-list');
 const exercisesList = document.querySelector('.exercises-list');
 const pagContainer = document.querySelector('#tui-pagination-container');
+const bpFormWrapper = document.querySelector('.bp-form-wraper')
 
 let pageSize = 8;
 let currentPage = 1;
@@ -27,10 +28,8 @@ function debounce(func, wait) {
 }
 
 function resizePage() {
-  if (window.innerWidth < 767) {
+  if (window.innerWidth < 768) {
     pageSize = 8;
-  } else if (window.innerWidth < 768) {
-    pageSize = 12;
   } else {
     pageSize = 12;
   }
@@ -52,15 +51,14 @@ async function getApiInfo({ filter, page = 1, limit = 12, type }) {
 }
 
 async function getExercises() {
+  bpFormWrapper.classList.add('visually-hidden')
   try {
-    const data = await getApiInfo({
+    const { page, totalPages, results } = await getApiInfo({
       type: 'filters',
       filter: defaultPage,
       limit: pageSize,
       page: currentPage,
     });
-
-    const { page, totalPages, results } = data;
 
     exercisesList.innerHTML = createMarkup(results);
     pagContainer.innerHTML = '';
@@ -83,8 +81,6 @@ function onPageChange(page) {
   currentPage = page;
   getExercises();
 }
-
-getExercises();
 
 async function filterBtn(event) {
   event.preventDefault();
