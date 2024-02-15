@@ -1,46 +1,52 @@
 .title-exercises {
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 100%;
-  letter-spacing: -0.02em;
-  color: var(--c-black);
-  margin-bottom: 25px;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: var(--c-black);
+    margin-bottom: 25px;
+}
+
+.exercise-title-wrapper {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .exercises-container {
-  border-radius: 30px;
-  max-width: 335px;
-  background-color: var(--c-bg-light);
-  padding: 40px 20px;
+    border-radius: 30px;
+    max-width: 335px;
+    background-color: var(--c-bg-light);
+    padding: 40px 20px;
 }
 
 .switch-item {
-  white-space: nowrap;
-  background-color: var(--c-light);
-  border-radius: 30px;
-  padding: 7px 14px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 129%;
-  color: var(--c-black);
-  border: none;
-  box-shadow: none;
+    background-color: var(--c-light);
+    border-radius: 30px;
+    padding: 7px 14px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    color: var(--c-black);
+    border: none;
+    box-shadow: none;
 }
+
 .is-active {
   background-color: var(--c-primary);
   color: var(--c-light);
 }
 
 .switch-list {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 6px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .exercises-list {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
+
 .exercises-item {
   margin-bottom: 20px;
 }
@@ -55,6 +61,7 @@
   background-position: center;
   position: relative;
 }
+
 .exercises-page {
   display: flex;
   justify-content: center;
@@ -103,6 +110,7 @@
   line-height: 150%;
   color: var(--c-light-tr40);
 }
+
 .image-container {
   position: relative;
 }
@@ -116,14 +124,19 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .title-exercises {
+    .switch-list {
+    margin-bottom: 32px;
+    gap: 8px;
+    }
+    
+    .title-exercises {
     font-size: 44px;
     line-height: 109%;
   }
   .exercises-container {
     border-radius: 50px;
     max-width: 736px;
-    padding: 60px;
+    padding: 48px;
   }
 
   .switch-item {

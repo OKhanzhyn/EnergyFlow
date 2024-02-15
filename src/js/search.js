@@ -1,61 +1,88 @@
 import { getApiInfo } from './api.js';
 import { postApiInfo } from './api.js';
 
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('bp-form');
-  const searchInput = document.querySelector('.bp-search-input');
-  const bpList = document.querySelector('.bp-list');
+document.addEventListener('DOMContentLoaded', async function () {
   const switchItems = document.querySelectorAll('.switch-item');
-  let page = 1; 
-  let limit = 9; 
-  let filter = '';
-  let subtype = '';
+  const exercisesList = document.querySelector('.exercises-list');
+  const bpList = document.querySelector('.bp-list');
+  const bpFormWrapper = document.querySelector('.bp-form-wraper');
+  const bpSearchInput = document.querySelector('.bp-search-input');
+  
+  // switch-item 
+  for (let i = 0; i < switchItems.length; i++) {
+    switchItems[i].addEventListener('click', async function() {
+      const filter = switchItems[i].dataset.filter;
 
-    switchItems.forEach(item => {
-        item.addEventListener('click', function() {
-    switchItems.forEach(element => {
-        element.classList.remove('is-active');
+      clearSearchResults();
+
+      // Виконуємо пошук у вправах що прийшли
+      const searchTerm = bpSearchInput.value.trim().toLowerCase();
+      performSearch('Muscles', 'All', searchTerm);
     });
-    this.classList.add('is-active');
-        filter = this.textContent.trim();
-    });
-});
+  }
 
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const searchTerm = searchInput.value.trim().toLowerCase();
-
+  // Чистимо попередній пошук
+  function clearSearchResults() {
     bpList.innerHTML = '';
+  }
 
-    axios.get(`/api/exercises`, {
-      params: {
-        search: searchTerm,
-        filter: filter,
-        subtype: subtype,
-        page: page,
-        limit: limit
+  // Пошук
+  function performSearch(filter, subtype, searchTerm) {
+    const filteredExercises = Array.from(bpList.children).filter(exercise =>
+      exercise.textContent.toLowerCase().includes(searchTerm)
+    );
+    if (filteredExercises.length === 0) {
+      renderErrorMessage('Вправ не знайдено');
+    } else {
+      renderExercises(filteredExercises, bpList);
+    }
+  }
+
+  // Помилка пошуку
+  function renderErrorMessage(message) {
+    exercisesList.innerHTML = `<li>${message}</li>`;
+  }
+
+  function renderExercises(exercises, list) {
+    list.innerHTML = ''; // Очищаємо список
+    for (let i = 0; i < exercises.length; i++) {
+      const li = document.createElement('li');
+      li.textContent = exercises[i].textContent;
+      li.addEventListener('click', function() {
+        bpFormWrapper.classList.remove('visually-hidden');
+      });
+      list.appendChild(li);
+    }
+  }
+  
+  bpSearchInput.addEventListener('input', function() {
+    const searchTerm = bpSearchInput.value.trim().toLowerCase();
+    performSearch('Muscles', 'All', searchTerm);
+  });
+
+  // Філтр та підвид 
+  document.getElementById('bp-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const filter = document.querySelector('.switch-item.is-active').dataset.filter;
+    const subtype = 'All';
+    const searchTerm = bpSearchInput.value.trim().toLowerCase();
+    performSearch(filter, subtype, searchTerm);
+  });
+
+  exercisesList.addEventListener('click', function(event) {
+    const targetItem = event.target.closest('.exercises-item');
+    if (targetItem) {
+      event.preventDefault();
+      bpFormWrapper.classList.remove('visually-hidden');
+    }
+  });
+
+  //Перехід switchItems
+  switchItems.forEach(item => {
+    item.addEventListener('click', function() {
+      if (!bpList.classList.contains('visually-hidden')) {
+        exercisesList.classList.remove('visually-hidden');
       }
-    })
-    .then(response => {
-      const data = response.data;
-      if (data.length === 0) {
-        iziToast.error({
-          title: 'No Results',
-          message: '',
-          position: 'topCenter',
-          timeout: 5000,
-          closeOnClick: true
-        });
-      } else {
-        data.forEach(exercise => {
-          const listItem = document.createElement('li');
-          listItem.textContent = exercise.name;
-          bpList.appendChild(listItem);
-        });
-      }
-    })
-        .catch(error => {
-            error;
     });
   });
 });
