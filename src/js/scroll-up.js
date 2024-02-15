@@ -1,16 +1,16 @@
-function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
+const scrollButton = document.querySelector('.scroll-up');
 
-    // Показывать/скрывать кнопку scroll-up при прокрутке
-    window.onscroll = function () {
-        var scrollButton = document.querySelector('.scroll-up');
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            scrollButton.style.display = "block";
-        } else {
-            scrollButton.style.display = "none";
-        }
-    };
+window.addEventListener('scroll', function () {
+  if (document.documentElement.scrollTop > 20) {
+    scrollButton.style.display = 'block';
+  } else {
+    scrollButton.style.display = 'none';
+  }
+});
+function scrollToTop(event) {
+  event.preventDefault(); 
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
