@@ -8,12 +8,12 @@
     border-radius: 50%;
     cursor: pointer;
     text-align: center;
-    z-index: 1000;
+    z-index: 1;
     width: 40px;
     height: 40px;
 }
 
-.scroll-up:active, .scroll-up:hover {
+ .scroll-up:hover {
     background-color: var(--c-primary-hov);
 }
 
