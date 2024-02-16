@@ -14,11 +14,13 @@ form.addEventListener('submit', async e => {
 
   if (!email.match(regex)) {
     inputFooter.style.borderColor = 'red';
-    warningEmail();
+    errorNotification();
     return;
   }
 
-  const result = await subscribe(email);
+    const result = await subscribe(email);
+    inputFooter.style.borderColor = '#7e847f';
+
   if (result) {
     success();
   }

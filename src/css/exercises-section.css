@@ -123,6 +123,26 @@
   text-align: center;
 }
 
+.exercise-no-result {
+  font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color:var(--c-black);
+}
+
+.exercise-span {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: var(--c-primary);
+}
+
 @media only screen and (min-width: 768px) {
     .switch-list {
     margin-bottom: 32px;
