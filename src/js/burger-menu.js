@@ -16,17 +16,13 @@ const refs = {
   const activeClass = 'active';
   const FAV_URL = 'http://localhost:5173/favorites.html';
   
-  mobMenuFav.addEventListener('click', onfavBtnClick);
-  function onfavBtnClick () {
-      if ( mobMenuFav )  
-      {mobMenuFav.classList.add(activeClass);
+  
+    window.addEventListener('load', () => {
+      if (window.location.pathname.endsWith('favorites.html')) {
+        mobMenuFav.classList.add(activeClass);
         mobMenuHome.classList.remove(activeClass);
-             return;
-           
       } else {
-          return;
-         }   
-  }
-    console.log(activeClass);
-    console.log(mobMenuBtnAct);
- 
+        mobMenuHome.classList.add(activeClass);
+        mobMenuFav.classList.remove(activeClass);
+      }
+    })
