@@ -100,7 +100,7 @@
   
      .active {
         border-radius: 30px;
-        padding: 6px 26px;
+        /* padding: 6px 26px; */
         width: 96px;
         height: 36px;
         background-color: var(--c-light);
