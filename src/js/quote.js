@@ -1,60 +1,75 @@
-import { getApiInfo } from './api.js';
-
-const LOCAL_KEY_DATE = 'dateNow';
-const LOCAL_KEY_QUOTE = 'quoteDay';
-
-const quotePage = document.getElementById('description');
-const authorPage = document.getElementById('author-quote');
-
-function getQuote() {
-  const currentDate = new Date();
-  const formattedDate = `${currentDate.getDate()}.${
-    currentDate.getMonth() + 1
-  }.${currentDate.getFullYear()}`;
-  const getDate = localStorage.getItem(LOCAL_KEY_DATE);
-
-  if (getDate === formattedDate) {
-    const localInfo = JSON.parse(localStorage.getItem(LOCAL_KEY_QUOTE));
-
-    // Перевірка, чи є дані в localStorage
-    if (localInfo) {
-      const { author, quote } = localInfo;
-      quotePage.textContent = quote;
-      authorPage.textContent = author;
-    } else {
-      // Якщо дані в localStorage відсутні, викликаємо getApiInfo для отримання нових даних
-      fetchQuote();
-    }
-    return;
-  }
-
-  if (!getDate || getDate !== formattedDate) {
-    localStorage.setItem(LOCAL_KEY_DATE, formattedDate);
-
-    // Викликаємо getApiInfo для отримання нових даних
-    fetchQuote();
-  }
-}
-
-function fetchQuote() {
-  getApiInfo({ type: 'quote' })
-    .then(({ data }) => {
-      const { author, quote } = data;
-
-      const quoteOfTheDay = {
-        author: author,
-        quote: quote,
-      };
-      localStorage.setItem(LOCAL_KEY_QUOTE, JSON.stringify(quoteOfTheDay));
-
-      quotePage.textContent = quote;
-      authorPage.textContent = author;
-    })
-    .catch(err => {
-      console.error('Error fetching quote:', err);
+import iziToast from 'izitoast';
+import axios from 'axios';
+const BASE_URL = 'https://energyflow.b.goit.study/api';
+const backendQuoteContainer = document.querySelector('.quote__backend');
+//отримання цитати з сервера
+async function getQuote() {
+  backendQuoteContainer.innerHTML = `<span class="loader"></span>`;
+  try {
+    const response = await axios.get(`${BASE_URL}/quote`);
+    return response.data;
+  } catch (error) {
+    iziToast.error({
+      title: 'Wrong',
+      message: 'Try again',
+      position: 'topRight',
     });
+    throw error;
+  }
+}
+//html-розмітка
+function createMarkup(author, quote) {
+  return `<p class="quote__backend-text">${quote}</p>
+    <p class="quote__backend-author">${author}</p>`;
+}
+//Функція для отримання нової цитати
+async function fetchAndSaveQuote() {
+  try {
+    //отримання цитати з сервера
+    const { author, quote } = await getQuote();
+    //локальне сховище(створення об'єкту, збереження цитати та дати)
+    const localStorageQuote = {
+      author,
+      quote,
+      savedDate: new Date().toLocaleDateString(),
+    };
+    localStorage.setItem('quote', JSON.stringify(localStorageQuote));
+    localStorage.setItem('savedDate', localStorageQuote.savedDate);
+
+    renderQuote(author, quote);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-getQuote();
+function renderQuote(author, quote) {
+  backendQuoteContainer.innerHTML = createMarkup(author, quote);
+}
 
+// Функція для отримання і відображення цитати
+async function getAndRenderQuote() {
+  const savedQuote = JSON.parse(localStorage.getItem('quote'));
+  const savedDate = localStorage.getItem('savedDate');
+  const currentDate = new Date().toLocaleDateString();
 
+  // Перевірка, чи цитата вже збережена для поточного дня
+  if (savedQuote && savedDate === currentDate) {
+    renderQuote(savedQuote.author, savedQuote.quote);
+  } else {
+    // Якщо цитата ще не збережена для поточного дня, отримуємо нову
+    await fetchAndSaveQuote();
+  }
+}
+getAndRenderQuote();
+//функція для оновлення цитати кожного дня опівночі
+function setDailyQuoteUpdate() {
+  const now = new Date();
+  const timeUntilMidnight =
+    new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0) -
+    now;
+  setTimeout(function () {
+    getAndRenderQuote();
+    setDailyQuoteUpdate();
+  }, timeUntilMidnight);
+}
+setDailyQuoteUpdate();

@@ -1,146 +1,105 @@
-import axios from 'axios';
-import { createPaginationFilters } from './pagination.js'; // Импортируем функцию создания пагинации
+const containerMuscles = document.querySelector('.exercises-nav-list');
+const exercisesContainer = document.querySelector('.exercises-container');
+const exerciseGroup = document.querySelector('.exercise-group');
+const pagination = document.querySelector('.pagination');
+const BASE_URL = 'https://energyflow.b.goit.study/api';
+let currentFilter = 'Muscles';
 
-axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
+containerMuscles.addEventListener('click', handleContainerMuscles);
+pagination.addEventListener('click', handleSwitchPage);
 
-const switchList = document.querySelector('.switch-list');
-const exercisesList = document.querySelector('.exercises-list');
-const pagContainer = document.querySelector('#tui-pagination-container');
-const bpFormWrapper = document.querySelector('.bp-form-wraper')
+getExercises(currentFilter).then(render);
 
-let pageSize = 8;
-let currentPage = 1;
-let defaultPage = 'Muscles';
-let paginationInstance;
+export default async function handleContainerMuscles(evt) {
+  const { filter } = evt.target.dataset;
+  if (!filter) return;
 
-switchList.addEventListener('click', filterBtn);
+  currentFilter = filter;
 
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
+  await getExercises(filter).then(render);
+
+  const prevBtn = containerMuscles.querySelector('.active');
+  const nextBtn = evt.target;
+
+  prevBtn.classList.remove('active');
+  nextBtn.classList.add('active');
 }
 
-function resizePage() {
-  if (window.innerWidth < 768) {
-    pageSize = 8;
-  } else {
-    pageSize = 12;
-  }
+async function getExercises(filter, page = 1) {
+  return fetch(
+    `${BASE_URL}/filters?filter=${filter}&page=${page}&limit=12`
+  ).then(resp => resp.json());
 }
 
-async function getApiInfo({ filter, page = 1, limit = 12, type }) {
-  try {
-    const response = await axios.get(`/${type}`, {
-      params: {
-        filter,
-        page,
-        limit,
-      },
-    });
-    return response.data;
-  } catch {
-    console.error('Something wrong');
-  }
+function render({ results, page, totalPages }) {
+  renderExerciseCards(results);
+  renderPagination(totalPages, page);
 }
 
-async function getExercises() {
-  bpFormWrapper.classList.add('visually-hidden')
-  try {
-    const { page, totalPages, results } = await getApiInfo({
-      type: 'filters',
-      filter: defaultPage,
-      limit: pageSize,
-      page: currentPage,
-    });
-
-    exercisesList.innerHTML = createMarkup(results);
-    pagContainer.innerHTML = '';
-
-    if (totalPages > 1) {
-      paginationInstance = createPaginationFilters(
-        pagContainer,
-        totalPages,
-        currentPage,
-        pageSize,
-        onPageChange
-      );
-    }
-  } catch {
-    console.error;
-  }
+function renderExerciseCards(exercises) {
+  exercisesContainer.innerHTML = exercises.map(buildExerciseCard).join('');
 }
 
-function onPageChange(page) {
-  currentPage = page;
-  getExercises();
+function buildExerciseCard({ name, filter, imgUrl }) {
+  return `
+    <li class="exercise-card" data-filter="${filter}" data-group="${name}">
+      <div class="exercise-card-img">
+        <img class="exercise-card-img" src="${imgUrl}" alt="${name}">
+        <div class="container-text">
+          <h3 class="description-category">${name}</h3>
+          <p class="description-category-par">${filter}</p>
+        </div>      
+      </div>
+    </li>
+  `;
 }
 
-async function filterBtn(event) {
-  event.preventDefault();
-
-  if (event.target.tagName !== 'BUTTON') {
+function renderPagination(pageCount, currentPage) {
+  if (pageCount <= 1) {
+    pagination.innerHTML = '';
     return;
   }
 
-  exercisesList.innerHTML = '';
-  currentPage = 1;
-  const filterValue = event.target;
-  const query = filterValue.dataset.filter;
-  defaultPage = query;
-
-  Array.from(event.currentTarget.children).map(item => {
-    if (item.textContent !== event.target.textContent) {
-      item.classList.remove('is-active');
-    } else {
-      item.classList.add('is-active');
-    }
-  });
-
-  try {
-    await getExercises();
-  } catch {
-    console.error('oops');
-  }
-}
-
-function createMarkup(results) {
-  const markUp = results
-    .map(
-      ({ name, filter, imgUrl }) =>
-        `<li class="exercises-item" data-filter="${filter}" data-name="${name}">         
-          <div class="image-container">
-            <img class="exercises-image" src="${imgUrl}" alt="${filter}"/>
-            <div class="text-container">
-              <h3 class="exercises-title">${name}</h3>
-              <p class="exercises-text">${filter}</p>
-            </div>
-          </div>
-         </li>`
-    )
+  pagination.innerHTML = Array(pageCount)
+    .fill(1)
+    .map((n, i) => n + i)
+    .map(buildPageButton)
     .join('');
-  return markUp;
+
+  const currentPageItem = pagination.children[currentPage - 1];
+
+  currentPageItem.classList.add('active');
+  // currentPageItem.firstElementChild.disabled = true;
 }
 
-window.addEventListener('load', () => {
-  resizePage();
-  getExercises();
-});
+function buildPageButton(i) {
+  return `
+    <li class="page" data-page="${i}">
+      <button>${i}</button>
+    </li>
+  `;
+}
 
-addEventListener(
-  'resize',
-  debounce(() => {
-    const prevItemsPerPage = pageSize;
-    resizePage();
+function handleSwitchPage(evt) {
+  const page = evt.target.closest('.page')?.dataset.page;
 
-    if (prevItemsPerPage !== pageSize) {
-      getExercises();
-    }
-  }, 250)
-);
+  if (!page) return;
+
+  getExercises(currentFilter, page).then(render);
+}
+
+///////////////////////////
+exercisesContainer.addEventListener('click', handleExerciseCardClick);
+
+function handleExerciseCardClick(event) {
+  const clickedElement = event.target;
+  const exerciseCard = clickedElement.closest('.exercise-card');
+
+  if (!exerciseCard) return;
+
+  const name = exerciseCard.querySelector('.description-category').textContent;
+
+  exerciseGroup.textContent = name;
+
+  return exerciseGroup.textContent;
+}

@@ -1,21 +1,12 @@
 :root {
-  --font-family: "DM Sans", sans-serif;
-  --c-primary: #7e847f;
-  --c-primary-tr: #7e847f33;
-  --c-primary-hov: #5F6560;
-  --c-black: #1b1b1b;
-  --c-black-tr20: #1B1B1B33;
-  --c-black-tr40: #1B1B1B66;
-  --c-black-tr50: #1B1B1B80;
-  --c-black-tr60: #1B1B1B99;
-  --c-light: #F6F6F6;
-  --c-light-tr10: #F6F6F61A;
-  --c-light-tr20: #F6F6F633;
-  --c-light-tr30: #F6F6F64D;
-  --c-light-tr40: #F6F6F666;
-  --c-light-tr60: #F6F6F699;
-  --c-white: #FFFFFF;
-  --c-bg-light: #E8E8E8;
-  --c-filled-stars: #EEA10C;
-  --c-unfilled-stars: #1B1B1B33;
+    --black: #1b1b1b;
+    --grey: #7e847f;
+    --grey-hover: #5f6560;
+    --white-dirty: #f6f6f6;
+    --stars: #1b1b1b33;
+    --stars-hover: #eea10c;
+    --white: #ffffff;
+    --hero-bg: #e8e8e8;
+    --dark-star: #f6f6f699;
+    --modal-backdrop: #1b1b1b99;
   }
