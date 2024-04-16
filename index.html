@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/EnergyFlow/dumbbell.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnergyFlow</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <script type="module" crossorigin src="/EnergyFlow/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/EnergyFlow/assets/vendor-db25513e.js">
+    <link rel="modulepreload" crossorigin href="/EnergyFlow/assets/scroll-to-top-btn-7e7e0997.js">
+    <link rel="stylesheet" href="/EnergyFlow/assets/scroll-to-top-btn-ae22d07b.css">
+    <link rel="stylesheet" href="/EnergyFlow/assets/vendor-e5212ee8.css">
+  </head>
+  <body>
+    <header class="header">
+    <div class="container header-container">
+      <!-- LOGO -->
+      <a href="./index.html" class="logo header-logo">energy.flow</a>
+      <!-- NAV -->
+      <ul class="header-nav">
+        <li class="header-nav-item">
+          <a class="header-nav-link is-active" href="./index.html" id="home">Home</a>
+        </li>
+        <li class="header-nav-item">
+          <a class="header-nav-link no-active" href="./favorites.html" id="favorites"
+            >Favorites</a
+          >
+        </li>
+      </ul>
+      <!-- SOC-LINK -->
+      <ul class="header-soc-list">
+        <li class="header-soc-item">
+          <a
+            href=" https://www.facebook.com/goITclub/"
+            class="header-soc-link"
+            aria-label="link to Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="header-soc-icon soc-icon" width="28" height="28">
+              <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="header-soc-item">
+          <a
+            href=" https://www.instagram.com/goitclub/"
+            class="header-soc-link"
+            aria-label="link to Instargam"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="header-soc-icon soc-icon" width="28" height="28">
+              <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="header-soc-item">
+          <a
+            href="https://www.youtube.com/c/GoIT"
+            class="header-soc-link"
+            aria-label="link to YouTube"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="header-soc-icon soc-icon" width="28" height="28">
+              <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+  
+      <!-- BURGER -->
+      <button
+        class="header-mob-btn js-open-menu"
+        aria-label="Burger menu"
+        rel="noopener noreferrer"
+      >
+        <svg class="header-mob-icon" width="32" height="16">
+          <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-burger-menu"></use>
+        </svg>
+      </button>
+    </div>
+  </header>
+  
+  <!-- MOB MENU -->
+  <div class="header-mob-menu js-menu-container is-hidden">
+    <div class="mob-wrap">
+      <!-- MOB-LOGO -->
+      <a href="./index.html" class="logo mob-logo">energy.flow</a>
+  
+      <!-- CLOSE-BTN -->
+      <button
+        class="close-mob-btn close-menu-btn js-close-menu"
+        aria-label="Close menu"
+        rel="noopener noreferrer"
+      >
+        <svg class="close-mob-icon" width="20" height="20">
+          <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-close-btn"></use>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- MOB-NAV -->
+    <ul class="mob-nav">
+      <li class="mob-nav-item">
+        <a class="mob-nav-link is-active" href="./index.html">Home</a>
+      </li>
+      <li class="mob-nav-item">
+        <a class="mob-nav-link no-active" href="./favorites.html">Favorites</a>
+      </li>
+    </ul>
+    <!-- MOB - SOC LINK -->
+    <ul class="mob-soc-list">
+      <li class="mob-soc-item">
+        <a
+          href=" https://www.facebook.com/goITclub/"
+          class="mob-soc-link"
+          aria-label="link to Facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="mob-soc-icon soc-icon" width="25" height="25">
+            <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-facebook"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="mob-soc-item">
+        <a
+          href=" https://www.instagram.com/goitclub/"
+          class="mob-soc-link"
+          aria-label="link to Instargam"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="mob-soc-icon soc-icon" width="25" height="25">
+            <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-instagram"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="mob-soc-item">
+        <a
+          href="https://www.youtube.com/c/GoIT"
+          class="mob-soc-link"
+          aria-label="link to YouTube"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="mob-soc-icon soc-icon" width="25" height="25">
+            <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-youtube"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+    <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-bg">
+        <ul class="hero-list">
+          <li class="hero-item"><p class="hero-hashtag">#Sport</p></li>
+          <li class="hero-item"><p class="hero-hashtag">#Healthy</p></li>
+          <li class="hero-item"><p class="hero-hashtag">#Workout</p></li>
+          <li class="hero-item"><p class="hero-hashtag">#Diet</p></li>
+        </ul>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Get <span class="title-accent">Body</span> in shape, Stay healthy
+        </h1>
+        <p class="hero-label">
+          Transform your physique and embrace a healthier lifestyle with our
+          comprehensive fitness and nutrition support.
+        </p>
+      </div>
+    </div>
+  </section>
+    <section class="section section-quote">
+    <div class="quote container">
+      <div class="quote__box">
+        <div class="quote__container">
+          <div class="icon-radius">
+            <svg class="quote__icon-run" width="18" height="20">
+              <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-running-man"></use>
+            </svg>
+          </div>
+          <h2 class="quote__title">Quote of the day</h2>
+          <svg class="quote__icon-quotes">
+            <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-quotes"></use>
+          </svg>
+        </div>
+        <div class="quote__backend"></div>
+      </div>
+      <div class="back-image"></div>
+    </div>
+  </section>
+    <section class="section-exercises">
+    <div class="container">
+      <div class="container-muscles">
+        <div class="title-exercises">
+          <h2 class="exercises">
+            Exercises <span class="span-exercises is-hidden"> / </span>
+          </h2>
+          <div class="group-title-wrap">
+            <h3 class="exercise-group"></h3>
+          </div>
+        </div>
+        <div class="search-wrap">
+          <div class="exercises-search">
+            <ul class="exercises-nav-list">
+              <li class="exercises-nav-item">
+                <button
+                  class="exercises-button active"
+                  id="muscles-button"
+                  data-filter="Muscles"
+                >
+                  Muscles
+                </button>
+              </li>
+              <li class="exercises-nav-item">
+                <button
+                  class="exercises-button"
+                  id="body-parts-button"
+                  data-filter="Body parts"
+                >
+                  Body parts
+                </button>
+              </li>
+              <li class="exercises-nav-item">
+                <button
+                  class="exercises-button"
+                  id="equipment-button"
+                  data-filter="Equipment"
+                >
+                  Equipment
+                </button>
+              </li>
+            </ul>
+          </div>
+          <form class="form-search is-hidden">
+            <label class="form-search-label" name="input-search">
+              <input
+                class="input-search"
+                type="text"
+                name="input-search"
+                placeholder="Search"
+              />
+              <button type="submit" class="search-btn">
+                <svg class="search-btn-svg" width="18" height="18">
+                  <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-search"></use>
+                </svg>
+              </button>
+            </label>
+          </form>
+        </div>
+  
+        <div class="fetch-container">
+          <ul class="exercises-container"></ul>
+          <ul class="pagination"></ul>
+        </div>
+        <div class="exercises-toolbar">
+          <ul class="exercises-gallery"></ul>
+          <ul class="pagination-exercises"></ul>
+          <span class="loader-gallery is-hidden"></span>
+        </div>
+        <div class="search-container is-hidden">
+          <ul class="search-list"></ul>
+          <ul class="search-pagination"></ul>
+          <p class="no-results is-hidden">
+            Unfortunately, no results were found. You may want to consider other
+            search options to find the exercise you are looking for. Our range is
+            wide and you have the opportunity to find more options that suit your
+            needs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+    <section class="daily">
+    <div class="container">
+      <div class="daily__img">
+        <picture>
+          <source
+            srcset="/EnergyFlow/assets/girl-mob-01fe29fd.png , /EnergyFlow/assets/girl-mob@2x-e6122de9.png 2x"
+            media="(max-width: 767px)"
+          />
+          <source
+            srcset="/EnergyFlow/assets/girl-tab-86354de3.png , /EnergyFlow/assets/girl-tab@2x-9177ace1.png 2x"
+            media="(min-width: 768px) and (max-width: 1024px)"
+          />
+          <img
+            src="/EnergyFlow/assets/girl-desk-4eb7bd12.png"
+            srcset="/EnergyFlow/assets/girl-desk@2x-f44405e2.png 2x"
+            alt="Image"
+          />
+        </picture>
+      </div>
+      <div class="daily__desc">
+        <div class="daily__icon">
+          <svg width="16" height="12">
+            <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-letter-H"></use>
+          </svg>
+        </div>
+        <div>
+          <div class="wraps">
+            <h2 class="daily__desc-title">110 min</h2>
+            <span class="daily__desc-sub">Daily norm of sports</span>
+          </div>
+          <p class="daily__desc-text">
+            The World Health Organization recommends at least 150 minutes of
+            moderate-intensity aerobic physical activity throughout the week for
+            adults aged 18-64. However, what happens if we adjust that number to
+            110 minutes every day?
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+    <footer>
+    <div class="container footer-container">
+      <div class="footer-div">
+        <div class="footer-style">
+          <div>
+            <a href="#" class="energy-flow">energy.flow</a>
+            <ul class="footer-ul">
+              <li>
+                <a href="https://www.facebook.com/goITclub/" target="_blank">
+                  <svg class="footer-svg" width="36" height="36">
+                    <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-facebook"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/goitclub/" target="_blank">
+                  <svg class="footer-svg" width="36" height="36">
+                    <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-instagram"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/c/GoIT" target="_blank">
+                  <svg class="footer-svg" width="36" height="36">
+                    <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-youtube"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-input-block">
+            <div>
+              <h2 class="footer-h2">
+                Transforming your <span class="span-footer">body</span> shape with
+                us
+              </h2>
+            </div>
+            <div class="footer-send">
+              <p class="footer-p">Subscribe and learn about new exercises!</p>
+              <form id="footerForm">
+                <input
+                  type="email"
+                  id="emailInput"
+                  required
+                  placeholder="Email"
+                />
+                <button type="submit" id="submitButton">Send</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <p class="footer-paragraph">
+          Energy Flow. All rights reserved.
+          <sapn class="Privacy-Policy"
+            >Privacy Policy <span class="padding">/</span> Terms of Service</sapn
+          >
+        </p>
+      </div>
+    </div>
+  </footer>
+    <div class="modal-backdrop"></div>
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </body>
+</html>

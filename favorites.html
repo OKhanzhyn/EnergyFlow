@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnergyFlow</title>
+    
+    <link rel="icon" type="image/svg+xml" href="/EnergyFlow/dumbbell.svg" />
+    <script type="module" crossorigin src="/EnergyFlow/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/EnergyFlow/assets/vendor-db25513e.js">
+    <link rel="modulepreload" crossorigin href="/EnergyFlow/assets/scroll-to-top-btn-7e7e0997.js">
+    <link rel="stylesheet" href="/EnergyFlow/assets/vendor-e5212ee8.css">
+    <link rel="stylesheet" href="/EnergyFlow/assets/scroll-to-top-btn-ae22d07b.css">
+  </head>
+  <body class="body-favorites">
+    <header class="header">
+    <div class="container header-container">
+      <!-- LOGO -->
+      <a href="./index.html" class="logo header-logo">energy.flow</a>
+      <!-- NAV -->
+      <ul class="header-nav">
+        <li class="header-nav-item">
+          <a class="header-nav-link is-active" href="./index.html" id="home">Home</a>
+        </li>
+        <li class="header-nav-item">
+          <a class="header-nav-link no-active" href="./favorites.html" id="favorites"
+            >Favorites</a
+          >
+        </li>
+      </ul>
+      <!-- SOC-LINK -->
+      <ul class="header-soc-list">
+        <li class="header-soc-item">
+          <a
+            href=" https://www.facebook.com/goITclub/"
+            class="header-soc-link"
+            aria-label="link to Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="header-soc-icon soc-icon" width="28" height="28">
+              <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="header-soc-item">
+          <a
+            href=" https://www.instagram.com/goitclub/"
+            class="header-soc-link"
+            aria-label="link to Instargam"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="header-soc-icon soc-icon" width="28" height="28">
+              <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="header-soc-item">
+          <a
+            href="https://www.youtube.com/c/GoIT"
+            class="header-soc-link"
+            aria-label="link to YouTube"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="header-soc-icon soc-icon" width="28" height="28">
+              <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+  
+      <!-- BURGER -->
+      <button
+        class="header-mob-btn js-open-menu"
+        aria-label="Burger menu"
+        rel="noopener noreferrer"
+      >
+        <svg class="header-mob-icon" width="32" height="16">
+          <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-burger-menu"></use>
+        </svg>
+      </button>
+    </div>
+  </header>
+  
+  <!-- MOB MENU -->
+  <div class="header-mob-menu js-menu-container is-hidden">
+    <div class="mob-wrap">
+      <!-- MOB-LOGO -->
+      <a href="./index.html" class="logo mob-logo">energy.flow</a>
+  
+      <!-- CLOSE-BTN -->
+      <button
+        class="close-mob-btn close-menu-btn js-close-menu"
+        aria-label="Close menu"
+        rel="noopener noreferrer"
+      >
+        <svg class="close-mob-icon" width="20" height="20">
+          <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-close-btn"></use>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- MOB-NAV -->
+    <ul class="mob-nav">
+      <li class="mob-nav-item">
+        <a class="mob-nav-link is-active" href="./index.html">Home</a>
+      </li>
+      <li class="mob-nav-item">
+        <a class="mob-nav-link no-active" href="./favorites.html">Favorites</a>
+      </li>
+    </ul>
+    <!-- MOB - SOC LINK -->
+    <ul class="mob-soc-list">
+      <li class="mob-soc-item">
+        <a
+          href=" https://www.facebook.com/goITclub/"
+          class="mob-soc-link"
+          aria-label="link to Facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="mob-soc-icon soc-icon" width="25" height="25">
+            <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-facebook"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="mob-soc-item">
+        <a
+          href=" https://www.instagram.com/goitclub/"
+          class="mob-soc-link"
+          aria-label="link to Instargam"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="mob-soc-icon soc-icon" width="25" height="25">
+            <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-instagram"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="mob-soc-item">
+        <a
+          href="https://www.youtube.com/c/GoIT"
+          class="mob-soc-link"
+          aria-label="link to YouTube"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="mob-soc-icon soc-icon" width="25" height="25">
+            <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-youtube"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    <div class="qoute-and-img container">
+      <section class="section section-quote">
+    <div class="quote container">
+      <div class="quote__box">
+        <div class="quote__container">
+          <div class="icon-radius">
+            <svg class="quote__icon-run" width="18" height="20">
+              <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-running-man"></use>
+            </svg>
+          </div>
+          <h2 class="quote__title">Quote of the day</h2>
+          <svg class="quote__icon-quotes">
+            <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-quotes"></use>
+          </svg>
+        </div>
+        <div class="quote__backend"></div>
+      </div>
+      <div class="back-image"></div>
+    </div>
+  </section>
+      <div class="second-third-together">
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcset="/EnergyFlow/assets/fav-girl-mob@2x-1f8432ff.png "
+            type="image/png"
+          />
+          <source
+            media="(max-width: 767px)"
+            srcset="/EnergyFlow/assets/fav-girl-mob@2x-1f8432ff.png "
+            type="image/png"
+          />
+          <img
+            class="second-favorites-photo"
+            src="/EnergyFlow/assets/fav-girl-mob-7117a7e4.png"
+            alt="girl"
+            loading="lazy"
+          />
+        </picture>
+
+        <div class="third-favorites-block">
+          <div class="third-favorites-block-content">
+            <svg class="dumbel-icon" width="16" height="12">
+              <use href="/EnergyFlow/assets/icons-66c1ea1d.svg#icon-letter-H"></use>
+            </svg>
+            <span class="favorites-minutes">110 min</span>
+            <span class="daily-norm-favorites">Daily norm of sports</span>
+          </div>
+        </div>
+      </div>
+      <!-- </section> -->
+    </div>
+
+    <div class="container">
+      <section class="favorite-sect-no-content">
+        <h1 class="title">Favorites</h1>
+        <div class="central-block-content">
+          <ul class="gallery"></ul>
+          <ul class="favorites-pagination is-hidden"></ul>
+          <div class="content-no-favorites">
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                srcset="/EnergyFlow/assets/dumbbell@2x-9a7a77f8.png "
+                type="image/png"
+              />
+              <source
+                media="(max-width: 767px)"
+                srcset="/EnergyFlow/assets/dumbbell-tab-6b787234.png "
+                type="image/png"
+              />
+              <img
+                class="dumbbell-photo"
+                src="/EnergyFlow/assets/dumbbell-tab-6b787234.png"
+                alt="dumbbell"
+                loading="lazy"
+              />
+            </picture>
+            <div class="favorite-no-content-text">
+              It appears that you haven't added any exercises to your favorites
+              yet. To get started, you can add exercises that you like to your
+              favorites for easier access in the future.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="favorites-backdrop modal-backdrop"></div>
+    
+    
+    
+    
+  </body>
+</html>
